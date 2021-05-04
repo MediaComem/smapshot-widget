@@ -1,0 +1,8 @@
+{
+    "AT": ["DE", "IT", "CZ", "SI", "CH", "SK", "LI"],
+    "CH": ["FR", "DE", "AT", "LI", "IT"],
+    "DE": ["DK", "PL", "NL", "BE", "AT", "SE", "CH", "FR", "LU", "CZ"],
+    "FR": ["BE", "LU", "DE", "CH", "IT", "ES", "MC", "AD"],
+    "IT": ["CH", "FR", "AT", "SI", "SM", "VA"],
+    "LI": ["CH", "AT"]
+}

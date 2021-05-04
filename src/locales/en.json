@@ -1,0 +1,83 @@
+{
+  "general": {
+    "contribute": "Contribute",
+    "imageIsNotGelocalised": "This image is not georeferenced in 3D, but you can help us to do it. <br/>(less than 10 minutes are required)"
+  },
+  "generic": {
+    "error": "An error occured",
+    "close": "Close",
+    "shortcut": {
+      "arrowLeftRight": "Arrow Left/Right",
+      "arrowUpDown": "Arrow Up/Down"
+    }
+  },
+  "layout": {
+    "navigation": {
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "fullscreen": "Fullscreen",
+      "showImage": "Show image",
+      "hideImage": "Hide image",
+      "showImgSlider": "Show image slider",
+      "hideImgSlider": "Hide image slider",
+      "transparency": "Transparency",
+      "depth": "Depth factor",
+      "altitude": "Altitude",
+      "coordinates": "Coordinates",
+      "lookUp": "Look up",
+      "lookDown": "Look down",
+      "lookLeft": "Look left",
+      "lookRight": "Look right",
+      "mapLayers": {
+        "world": "world",
+        "basemapAt": {
+          "geolandbasemap": "Basemap.at<br/>Standard",
+          "bmaphidpi": "Basemap.at<br/>High-DPI",
+          "bmaporthofoto30cm": "Basemap.at<br/>Orthophoto",
+          "bmapoberflaeche": "Basemap.at<br/>Hillshading",
+          "bmapoverlay": "Street signature and labels"
+        },
+        "imaginerio": "ImagineRio",
+        "swisstopo": {
+          "pixelkarte-grau": "Swisstopo<br/>Black & White",
+          "pixelkarte-farbe": "Swisstopo<br/>Colors",
+          "swissimage-product": "Swissimage<br/>Current",
+          "swissimage-product_1946": "Swissimage<br/>1946",
+          "hiks-dufour": "Dufour<br/>1865",
+          "hiks-siegfried": "Siegfried<br/>1926",
+          "swisstlm3d": "Buildings"
+        },
+        "vlb": {
+          "basemap_vlbterrain": "Orthophoto",
+          "wi2015_20cm": "RGB<br/>Winter 2015",
+          "ef2012_12cm": "RGB<br/>2012",
+          "pe199x_25cm": "Pseudo-RGB<br/>1990s",
+          "pe198x_20cm": "Pseudo-RGB<br/>1980s",
+          "sw197x_25cm": "Greyscale<br/>1970s",
+          "sw195x_25cm": "Greyscale<br/>1950s",
+          "sw193x_25cm": "Greyscale<br/>1930s",
+          "vogisseilbahn": "Cable cars",
+          "hauptkonturflaechen": "Buildings"
+        },
+        "smapshotStyle": "Smapshot<br/>Earth",
+        "maptiler": {
+          "satellite": "Maptiler Satellite"
+        },
+        "bing": {
+          "aerial": "Bing aerial"
+        },
+        "country": "country | countries"
+      }
+    },
+    "owners": {
+      "all": "All owners",
+      "owner": "owner | owners"
+    }
+  },
+  "country": {
+    "AT": "Austria",
+    "BR": "Brazil",
+    "CH": "Switzerland",
+    "LI": "Liechtenstein"
+  }
+}

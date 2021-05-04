@@ -1,0 +1,82 @@
+{
+  "general": {
+    "contribute": "Contribuisci",
+    "imageIsNotGelocalised": "Questa immagine non è georeferenziata in 3D, ma potete aiutarci a farlo.<br/> (sono necessari meno di 10 minuti)"
+  },
+  "generic": {
+    "error": "C'è stato un errore",
+    "close": "Chiudi",
+    "shortcut": {
+      "arrowLeftRight": "Freccia sinistra/destra",
+      "arrowUpDown": "Freccia su/giù"
+    }
+  },
+  "layout": {
+    "navigation": {
+      "zoomIn": "Ingrandisci",
+      "zoomOut": "Rimpicciolisci",
+      "fullscreen": "Schermo intero",
+      "showImage": "Mostra immagine",
+      "hideImage": "Nascondi immagine",
+      "showImgSlider": "Mostra lo scorrimento dell'immagine",
+      "hideImgSlider": "Nascondi lo scorrimento dell'immagine",
+      "transparency": "Trasparenza",
+      "depth": "Fattore profondità",
+      "altitude": "Altitudine",
+      "coordinates": "Coordinate",
+      "lookUp": "Guarda su",
+      "lookDown": "Guarda giù",
+      "lookLeft": "Guarda a sinistra",
+      "lookRight": "Guarda a destra",
+      "mapLayers": {
+        "world": "mondo",
+        "basemapAt": {
+          "geolandbasemap": "Basemap.at<br/>Standard",
+          "bmaphidpi": "Basemap.at<br/>High-DPI",
+          "bmaporthofoto30cm": "Basemap.at<br/>Orthophoto",
+          "bmapoberflaeche": "Basemap.at<br/>Rilievo",
+          "bmapoverlay": "Strada ed etichette"
+        },
+        "swisstopo": {
+          "pixelkarte-grau": "Swisstopo<br/>Bianco e nero",
+          "pixelkarte-farbe": "Swisstopo<br/>Colori",
+          "swissimage-product": "Swissimage<br/>Attuale",
+          "swissimage-product_1946": "Swissimage<br/>1946",
+          "hiks-dufour": "Dufour<br/>1865",
+          "hiks-siegfried": "Siegfried<br/>1926",
+          "swisstlm3d": "Edifici"
+        },
+        "vlb": {
+          "basemap_vlbterrain": "Orthophoto",
+          "wi2015_20cm": "RGB<br/>Inverno 2015",
+          "ef2012_12cm": "RGB<br/>2012",
+          "pe199x_25cm": "Pseudo-RGB<br/>Anni 1990",
+          "pe198x_20cm": "Pseudo-RGB<br/>Anni 1980",
+          "sw197x_25cm": "Scala di grigi<br/>Anni 1970",
+          "sw195x_25cm": "Scala di grigi<br/>Anni 1950",
+          "sw193x_25cm": "Scala di grigi<br/>Anni 1930",
+          "vogisseilbahn": "Funivie",
+          "hauptkonturflaechen": "Edifici"
+        },
+        "smapshotStyle": "Smapshot<br/>Terra",
+        "maptiler": {
+          "satellite": "Maptiler Satellite"
+        },
+        "bing": {
+          "aerial": "Bing aerial"
+        },
+        "country": "paese | paesi"
+      }
+    },
+    "owners": {
+      "all": "Tutti i proprietari",
+      "owner": "proprietario | proprietari"
+    }
+  },
+  "country": {
+    "AT": "Austria",
+    "BR": "Brasile",
+    "CH": "Svizzera",
+    "LI": "Liechtenstein"
+  }
+}

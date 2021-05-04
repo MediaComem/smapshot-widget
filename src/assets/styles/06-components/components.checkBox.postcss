@@ -1,0 +1,76 @@
+/* Source: https://codepen.io/elujambio/pen/rKKLbx */
+/* Add sr-only class to checkbox, radio element */
+
+.radioWrapper,
+.checkboxWrapper {
+    position: relative;
+}
+
+.radioWrapper label,
+.checkboxWrapper label {
+    display: flex;
+    position: relative;
+    font-weight: 400;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.radioWrapper label:before,
+.radioWrapper label:after,
+.checkboxWrapper label:before,
+.checkboxWrapper label:after {
+    pointer-events: none;
+}
+
+.radioWrapper label:before,
+.radioWrapper label:after {
+    border-radius: 50%;
+}
+
+.radioWrapper label:before,
+.checkboxWrapper label:before {
+    @apply bg-gray-50 rounded;
+    display: flex;
+    flex-shrink: 0;
+    content: ' ';
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.radioWrapper label:after,
+.checkboxWrapper label:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    content: ' ';
+    height: 12px;
+    width: 12px;
+    background: blue;
+    transform: scale(0) translate(50%, -50%);
+    transition: transform .3s ease;
+}
+
+.checkboxWrapper label:after {
+    height: 7px;
+    width: 12px;
+    top:18px;
+    left: 8px;
+    border-bottom: solid 3px theme('colors.teal.400');
+    border-left: solid 3px theme('colors.teal.400');
+    background: none;
+    transform: rotate(-45deg) scale(0) translate(50%, -50%);
+    transition: transform .1s ease, opacity .1s ease;
+    transform-origin: center center;
+}
+
+.radioWrapper input[type="radio"]:checked+label:after {
+    transform: scale(1) translate(50%, -50%);
+}
+
+.checkboxWrapper input[type="checkbox"]:checked+label:after {
+    opacity: 1;
+    transform: rotate(-45deg) scale(1.2) translate(50%, -50%);
+}

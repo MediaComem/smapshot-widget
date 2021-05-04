@@ -1,0 +1,82 @@
+{
+  "general": {
+    "contribute": "Participer",
+    "imageIsNotGelocalised": "Cette image n'est pas géoréférencée en 3D, mais vous pouvez nous aider à le faire.<br/>(moins de 10 minutes sont nécessaires)"
+  },
+  "generic": {
+    "error": "Une erreur est survenue",
+    "close": "Fermer",
+    "shortcut": {
+      "arrowLeftRight": "Flèche Gauche/Droite",
+      "arrowUpDown": "Flèche Haut/Bas"
+    }
+  },
+  "layout": {
+    "navigation": {
+      "zoomIn": "Zoom avant",
+      "zoomOut": "Zoom arrière",
+      "fullscreen": "Plein écran",
+      "showImage": "Voir l'image",
+      "hideImage": "Cacher l'image",
+      "showImgSlider": "Voir le bandeau d'images",
+      "hideImgSlider": "Cacher le bandeau d'images",
+      "transparency": "Transparence",
+      "depth": "Facteur de profondeur",
+      "altitude": "Altitude",
+      "coordinates": "Coordonnées",
+      "lookUp": "Regarder en haut",
+      "lookDown": "Regarder en bas",
+      "lookLeft": "Regarder à gauche",
+      "lookRight": "Regarder à droite",
+      "mapLayers": {
+        "world": "monde",
+        "basemapAt": {
+          "geolandbasemap": "Basemap.at<br/>Standard",
+          "bmaphidpi": "Basemap.at<br/>High-DPI",
+          "bmaporthofoto30cm": "Basemap.at<br/>Orthophoto",
+          "bmapoberflaeche": "Basemap.at<br/>Relief",
+          "bmapoverlay": "Rues et labels"
+        },
+        "swisstopo": {
+          "pixelkarte-grau": "Swisstopo<br/>Noir et blanc",
+          "pixelkarte-farbe": "Swisstopo<br/>Couleurs",
+          "swissimage-product": "Swissimage<br/>Actuel",
+          "swissimage-product_1946": "Swissimage<br/>1946",
+          "hiks-dufour": "Dufour<br/>1865",
+          "hiks-siegfried": "Siegfried<br/>1926",
+          "swisstlm3d": "Bâtiments"
+        },
+        "vlb": {
+          "basemap_vlbterrain": "Orthophoto",
+          "wi2015_20cm": "RGB<br/>Hiver 2015",
+          "ef2012_12cm": "RGB<br/>2012",
+          "pe199x_25cm": "Pseudo-RGB<br/>Années 90",
+          "pe198x_20cm": "Pseudo-RGB<br/>Années 80",
+          "sw197x_25cm": "Noir et blanc<br/>Années 70",
+          "sw195x_25cm": "Noir et blanc<br/>Années 50",
+          "sw193x_25cm": "Noir et blanc<br/>Années 30",
+          "vogisseilbahn": "Téléphériques",
+          "hauptkonturflaechen": "Bâtiments"
+        },
+        "smapshotStyle": "Smapshot<br/>Terre",
+        "maptiler": {
+          "satellite": "Maptiler Satellite"
+        },
+        "bing": {
+          "aerial": "Bing aerial"
+        },
+        "country": "pays | pays"
+      }
+    },
+    "owners": {
+      "all": "Tous les propriétaires",
+      "owner": "propriétaire | propriétaires"
+    }
+  },
+  "country": {
+    "AT": "Autriche",
+    "BR": "Brésil",
+    "CH": "Suisse",
+    "LI": "Liechtenstein"
+  }
+}

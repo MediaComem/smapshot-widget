@@ -1,0 +1,21 @@
+{
+  "animation": false,
+  "skyBox": false,
+  "baseLayerPicker": false,
+  "vrButton": false,
+  "geocoder": false,
+  "homeButton": false,
+  "fullscreenButton": false,
+  "infoBox": false,
+  "sceneModePicker": false,
+  "selectionIndicator": false,
+  "timeline": false,
+  "navigationHelpButton": false,
+  "scene3DOnly": true,
+  "orderIndependentTranslucency": true,
+  "useDefaultRenderLoop": true,
+  "imageryProvider": false,
+  "requestRenderMode": true,
+  "maximumRenderTimeChange": "Infinity",
+  "creditContainer": "cesiumCredits"
+}

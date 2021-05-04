@@ -1,0 +1,82 @@
+{
+  "general": {
+    "contribute": "Teilnehmen",
+    "imageIsNotGelocalised": "Dieses Bild ist nicht in 3D georeferenziert, aber Sie können uns dabei helfen.<br/>(weniger als 10 Minuten sind erforderlich)"
+  },
+  "generic": {
+    "error": "Fehler aufgetreten",
+    "close": "Schliessen",
+    "shortcut": {
+      "arrowLeftRight": "Pfeiltaste links/rechts",
+      "arrowUpDown": "Pfeiltaste aufwärts/abwärts"
+    }
+  },
+  "layout": {
+    "navigation": {
+      "zoomIn": "heranzoomen",
+      "zoomOut": "herauszoomen",
+      "fullscreen": "Vollbildschrim",
+      "showImage": "Bild anzeigen",
+      "hideImage": "Bild nicht anzeigen",
+      "showImgSlider": "Schieber anzeigen",
+      "hideImgSlider": "Schieber nicht anzeigen",
+      "transparency": "Transparenz",
+      "depth": "Bildtiefe",
+      "altitude": "Höhe",
+      "coordinates": "Koordinaten",
+      "lookUp": "raufschauen",
+      "lookDown": "runterschauen",
+      "lookLeft": "links schauen",
+      "lookRight": "rechts schauen",
+      "mapLayers": {
+        "world": "welt",
+        "basemapAt": {
+          "geolandbasemap": "Basemap.at<br/>Standard",
+          "bmaphidpi": "Basemap.at<br/>High-DPI",
+          "bmaporthofoto30cm": "Basemap.at<br/>Orthofoto",
+          "bmapoberflaeche": "Basemap.at<br/>Oberfläche",
+          "bmapoverlay": "Straßen und Beschriftungen"
+        },
+        "swisstopo": {
+          "pixelkarte-grau": "Swisstopo<br/>Schwarz-Weiß",
+          "pixelkarte-farbe": "Swisstopo<br/>Farben",
+          "swissimage-product": "Swissimage<br/>Aktuell",
+          "swissimage-product_1946": "Swissimage<br/>1946",
+          "hiks-dufour": "Dufour<br/>1865",
+          "hiks-siegfried": "Siegfried<br/>1926",
+          "swisstlm3d": "Gebäude"
+        },
+        "vlb": {
+          "basemap_vlbterrain": "Orthofoto",
+          "wi2015_20cm": "RGB<br/>Winter 2015",
+          "ef2012_12cm": "RGB<br/>2012",
+          "pe199x_25cm": "Pseudo-RGB<br/>90er Jahre",
+          "pe198x_20cm": "Pseudo-RGB<br/>80er Jahre",
+          "sw197x_25cm": "Graustufen<br/>70er Jahre",
+          "sw195x_25cm": "Graustufen<br/>50er Jahre",
+          "sw193x_25cm": "Graustufen<br/>30er Jahre",
+          "vogisseilbahn": "Seilbahnen",
+          "hauptkonturflaechen": "Gebäude"
+        },
+        "smapshotStyle": "Smapshot<br/>Erde",
+        "maptiler": {
+          "satellite": "Maptiler Satellite"
+        },
+        "bing": {
+          "aerial": "Bing aerial"
+        },
+        "country": "land | länder"
+      }
+    },
+    "owners": {
+      "all": "Alle Institutionen",
+      "owner": "Institution | Institutionen"
+    }
+  },
+  "country": {
+    "AT": "Österreich",
+    "BR": "Brasilien",
+    "CH": "Schweiz",
+    "LI": "Liechtenstein"
+  }
+}

@@ -1,0 +1,31 @@
+input.focus-visible, textarea.focus-visible{
+  @apply outline-none border-gray-200 shadow-none;
+}
+
+input::placeholder {
+  @apply text-gray-300;
+  opacity: 1;
+}
+
+.dropdown {
+  @apply inline-block pr-4 appearance-none bg-transparent;
+  width: auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background-image: url('../../images/icons/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: right top 50%;
+  background-size: .65em auto;
+  &::-ms-expand {
+    display: none;
+  }
+}
+.dropdown.focus-visible{
+  @apply outline-none shadow-none border-b-2 border-teal-200;
+  margin-bottom: -4px; /* Compensate border size + 2px from dropdown */
+}
+/* Remove focus ring on Firefox */
+.dropdown:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}

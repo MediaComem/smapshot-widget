@@ -1,0 +1,71 @@
+/* purgecss start ignore */
+@import '~tailwindcss/base.css';
+/* purgecss end ignore */
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+
+@import '~tailwindcss/components.css';
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ * @import 'components/buttons';
+ */
+
+
+/* RULES
+
+    1. Style directly in components is great but elements used a lot of times on page (like button) benefit to be loaded only one time. So think before choosing where you'll place style. There is no other way.
+    2. If components have been imported and style need to be defined or overrided, insert here
+    3. Base style is defined here
+    4. Be careful these styles aren't purge
+
+*/
+
+/* purgecss start ignore */
+
+/* 01. Settings */
+
+/* 02. Tools */
+
+/* 03. Generic */
+@import '03-generic/generic.focusVisible.postcss';
+@import '03-generic/generic.selection.postcss';
+@import '03-generic/generic.scrollbar.postcss';
+
+/* 04. Elements */
+@import '04-elements/elements.all.postcss';
+@import '04-elements/elements.body.postcss';
+@import '04-elements/elements.form.postcss';
+
+/* 05. Objects */
+@import '05-objects/objects.tooltip.postcss';
+@import '05-objects/objects.popover.postcss';
+
+/* 06. Components */
+
+@import '06-components/components.button.postcss';
+@import '06-components/components.checkBox.postcss';
+
+/* 99. Utilities */
+
+/* purgecss end ignore */
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@import '~tailwindcss/utilities.css';
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example:
+ * @import 'utilities/background-patterns';
+ */
+
+

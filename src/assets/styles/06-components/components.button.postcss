@@ -1,0 +1,60 @@
+/* Main Actions Buttons with background and border */
+
+.btn {
+  @apply rounded my-2 mr-2 py-3 px-5;
+  padding-top:0.9rem;
+
+  &:last-child{
+    @apply mr-0;
+  }
+
+  &:hover{
+    @apply text-white bg-teal-400;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .btn{
+    @apply text-sm px-4;
+  }
+}
+
+/* TOOLS */
+
+.btn.btn__tools {
+  @apply justify-center items-center p-2 text-gray-500 bg-white bg-opacity-95 shadow z-50;
+  display: flex !important;
+
+  & input{
+    background:none;
+  }
+
+  & svg,
+  &:hover svg{
+    @apply text-gray-500;
+  }
+  &:hover{
+    @apply bg-opacity-100;
+  }
+
+  &:hover, &:hover input{
+    @apply text-gray-400 border-gray-300;
+  }
+  &:hover input{
+    @apply text-gray-500;
+  }
+}
+
+.btn.btn__tools--withLabel{
+  @apply px-4 py-3;
+  & svg{
+    @apply mr-1;
+  }
+}
+/* Use when a GCP is selected */
+.btn.btn__tools--selected  {
+  @apply bg-yellow-300 text-gray-500;
+  &:hover{
+    @apply bg-yellow-100;
+  }
+}

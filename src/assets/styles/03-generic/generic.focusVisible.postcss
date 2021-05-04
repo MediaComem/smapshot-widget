@@ -1,0 +1,26 @@
+/* To allow focus styling only when using keyboard for certains elements (like button). Keep focus style for input when using mouse. source: https://css-tricks.com/keyboard-only-focus-styles/ */
+
+.js-focus-visible :focus:not(.focus-visible), .js-focus-visible :focus:not([data-focus-visible-added]) {
+    @apply outline-none;
+}
+
+.focus-visible,
+[data-focus-visible-added],
+button[data-focus-visible-added]
+button[type][data-focus-visible-added],
+input[type=checkbox].sr-only.focus-visible~label{
+    outline:2px auto theme('colors.teal.300');
+    outline-offset:.15em;
+}
+
+// Weird behaviour between Firefox and Chrome - outline-style auto work in Chrome but not firefox, dashed work in firefox but has some issue on chrome (for example on title challenge)
+@supports (-moz-appearance:none) {
+    .focus-visible,
+    [data-focus-visible-added],
+    button[data-focus-visible-added],
+    button[type][data-focus-visible-added],
+    input[type=checkbox].sr-only.focus-visible~label{
+        outline:2px dashed theme('colors.teal.300');
+        outline-offset:.15em;
+    }
+}

@@ -1,0 +1,82 @@
+{
+  "general": {
+    "contribute": "Contribuir",
+    "imageIsNotGelocalised": "Esta imagem não é georeferenciada em 3D, mas pode ajudar-nos a fazê-lo. <br/>(são necessários menos de 10 minutos)"
+  },
+  "generic": {
+    "error": "Ocorreu um erro",
+    "close": "Fechar",
+    "shortcut": {
+      "arrowLeftRight": "Seta esquerda/direita",
+      "arrowUpDown": "Seta cima/baixo"
+    }
+  },
+  "layout": {
+    "navigation": {
+      "zoomIn": "Aproximar Zoom",
+      "zoomOut": "Afastar Zoom",
+      "fullscreen": "Tela cheia",
+      "showImage": "Mostrar imagem",
+      "hideImage": "Ocultar imagem",
+      "showImgSlider": "Mostrar slider de imagem",
+      "hideImgSlider": "Ocultar slider de imagem",
+      "transparency": "Transparência",
+      "depth": "Fator de profundidade",
+      "altitude": "Altitude",
+      "coordinates": "Coordenadas",
+      "lookUp": "Olhar para cima",
+      "lookDown": "Olhar para baixo",
+      "lookLeft": "Olhar para esquerda",
+      "lookRight": "Olhar para direita",
+      "mapLayers": {
+        "world": "mundo",
+        "basemapAt": {
+          "geolandbasemap": "Basemap.at<br/>Norma",
+          "bmaphidpi": "Basemap.at<br/>High-DPI",
+          "bmaporthofoto30cm": "Basemap.at<br/>Orthophoto",
+          "bmapoberflaeche": "Basemap.at<br/>Alívio",
+          "bmapoverlay": "Rua e etiquetas"
+        },
+        "swisstopo": {
+          "pixelkarte-grau": "Swisstopo<br/>Preto e Branco",
+          "pixelkarte-farbe": "Swisstopo<br/>Cores",
+          "swissimage-product": "Swissimage<br/>Actual",
+          "swissimage-product_1946": "Swissimage<br/>1946",
+          "hiks-dufour": "Dufour<br/>1865",
+          "hiks-siegfried": "Siegfried<br/>1926",
+          "swisstlm3d": "Edifícios"
+        },
+        "vlb": {
+          "basemap_vlbterrain": "Orthophoto",
+          "wi2015_20cm": "RGB<br/>Inverno 2015",
+          "ef2012_12cm": "RGB<br/>2012",
+          "pe199x_25cm": "Pseudo-RGB<br/>1990",
+          "pe198x_20cm": "Pseudo-RGB<br/>1980",
+          "sw197x_25cm": "Escala de cinza<br/>1970",
+          "sw195x_25cm": "Escala de cinza<br/>1950",
+          "sw193x_25cm": "Escala de cinza<br/>1930",
+          "vogisseilbahn": "Teleféricos",
+          "hauptkonturflaechen": "Edifícios"
+        },
+        "smapshotStyle": "Smapshot<br/>Terra",
+        "maptiler": {
+          "satellite": "Maptiler Satellite"
+        },
+        "bing": {
+          "aerial": "Bing aerial"
+        },
+        "country": "país | países"
+      }
+    },
+    "owners": {
+      "all": "Todos os proprietários",
+      "owner": "proprietário | proprietários"
+    }
+  },
+  "country": {
+    "AT": "Áustria",
+    "BR": "Brasil",
+    "CH": "Suíça",
+    "LI": "Liechtenstein"
+  }
+}

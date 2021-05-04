@@ -1,0 +1,142 @@
+/* Source: Stackoverflow tags popover with small modifications https://stackoverflow.com/questions/17884750/apply-css-to-popover-in-bootstrap */
+
+.popover {
+    position: absolute;
+    min-width: 160px;
+    color: initial;
+    border: 1px solid theme('colors.gray.100');
+    border-radius: 5px;
+    background: theme('colors.white');
+    @apply z-40;
+    max-width: initial;
+    padding:0;
+}
+.popover .popover-inner{
+    @apply p-6;
+    max-width: 100%;
+}
+
+.popover__Menu{
+    @apply py-5;
+    & .popover-inner{
+        @apply p-0;
+    }
+    & .popover__Menu--item {
+        &:hover{
+            @apply bg-gray-100;
+        }
+        & > *{
+            @apply text-gray-400 no-underline font-semibold block text-left w-full py-2 px-6;
+            &:hover{
+                @apply no-underline text-gray-400;
+            }
+        }
+    }
+}
+
+
+
+.popover .popover-arrow {
+    display: block;
+    position: absolute;
+    border-color:transparent;
+}
+
+.popover .popover-arrow:before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.popover .popover-arrow:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 15px 10px 15px;
+}
+
+.popover[x-placement^='bottom'] .popover-arrow {
+    top: -10px;
+    width: 30px;
+    height: 10px;
+}
+
+.popover[x-placement^='bottom'] .popover-arrow:before {
+    top: 0px;
+    border-bottom-color: theme('colors.gray.100');
+    border-width: 0 15px 10px 15px;
+}
+
+.popover[x-placement^='bottom'] .popover-arrow:after {
+    top: 1px;
+    border-bottom-color: theme('colors.white');
+    border-width: 0 15px 10px 15px;
+}
+
+.popover[x-placement^='top'] .popover-arrow {
+    bottom: -10px;
+    width: 30px;
+    height: 10px;
+}
+
+.popover[x-placement^='top'] .popover-arrow:before {
+    bottom: 0px;
+    border-top-color: theme('colors.gray.100');
+    border-width: 10px 15px 0 15px;
+}
+
+.popover[x-placement^='top'] .popover-arrow:after {
+    bottom: 1px;
+    border-top-color: theme('colors.white');
+    border-width: 10px 15px 0 15px;
+}
+
+.popover[x-placement^='bottom'] .popover-arrow,
+.popover[x-placement^='top'] .popover-arrow {
+    left: calc(50% - 30px);
+}
+
+.popover[x-placement^='right'] .popover-arrow {
+    width: 10px;
+    height: 30px;
+    left: -10px;
+}
+
+.popover[x-placement^='right'] .popover-arrow:before {
+    left: 0px;
+    border-right-color: theme('colors.gray.100');
+    border-width: 15px 10px 15px 0;
+}
+
+.popover[x-placement^='right'] .popover-arrow:after {
+    left: 1px;
+    border-right-color: theme('colors.white');
+    border-width: 15px 10px 15px 0;
+}
+
+.popover[x-placement^='left'] .popover-arrow {
+    width: 10px;
+    height: 30px;
+    right: -10px;
+}
+
+.popover[x-placement^='left'] .popover-arrow:before {
+    right: 0px;
+    border-left-color: theme('colors.gray.100');
+    border-width: 15px 0 15px 10px;
+}
+
+.popover[x-placement^='left'] .popover-arrow:after {
+    right: 1px;
+    border-left-color: theme('colors.white');
+    border-width: 15px 0 15px 10px;
+}
+
+.popover[x-placement^='right'] .popover-arrow,
+.popover[x-placement^='left'] .popover-arrow {
+    top: calc(50% - 30px);
+}

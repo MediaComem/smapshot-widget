@@ -1,0 +1,48 @@
+.scroll-x {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+  /* Experimental only on Firefox */
+  scrollbar-width: thin;
+  scrollbar-width: 7px;
+  scrollbar-color: theme('colors.gray.100') theme('colors.white');
+
+  &:hover,
+  &:focus {
+    scrollbar-color: theme('colors.teal.300') theme('colors.white');
+  }
+}
+
+.scroll-x::-webkit-scrollbar,
+.scroll-x::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+.scroll-x::-webkit-scrollbar-thumb {
+  @apply bg-teal-300 rounded;
+}
+
+.scroll-y {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+  /* Experimental only on Firefox */
+  scrollbar-width: thin;
+  scrollbar-width: 7px;
+  scrollbar-color: theme('colors.gray.100') theme('colors.white');
+}
+
+.scroll-y::-webkit-scrollbar,
+.scroll-y::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+.scroll-x::-webkit-scrollbar {
+  height: 7px;
+}
+
+.scroll-y::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scroll-y::-webkit-scrollbar-thumb {
+  @apply bg-gray-100 rounded;
+}
