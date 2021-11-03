@@ -115,7 +115,19 @@
   .controls--show{
     opacity:1;
   }
+  @media only screen and (max-width: 450px) {
+    /* For small screen: */
+    .controls--show {
+      opacity:0;
+    }
+  }
 
+    @media only screen and (max-height: 450px) {
+    /* For small screen: */
+    .controls--show {
+      opacity:0;
+    }
+  }
   .controlPanel__3dnavigation{
     bottom: 50px;right:0;
   }

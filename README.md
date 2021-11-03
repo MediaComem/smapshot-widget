@@ -4,7 +4,7 @@ This repository contain the code to run an 3d embed with an image of Smapshot an
 
 ## Usage
 
-Replace the two variable in uppercase `OWNER_ID_OR_SLUG` and `ORIGINAL_IMAGE_ID`in the following template URL `http://localhost:8080/owner/OWNER_ID_OR_SLUG/original_image/ORIGINAL_IMAGE_ID` to get an URL ready for iframe.
+Replace the two variable in uppercase `OWNER_ID_OR_SLUG` and `ORIGINAL_IMAGE_ID`in the following template URL `http://localhost:8080/embed/owner/OWNER_ID_OR_SLUG/original_image/ORIGINAL_IMAGE_ID` to get an URL ready for iframe.
 
 ```html
   <iframe title="Smapshot georef" width="700" height="400" src="https://smapshot-beta.heig-vd.ch/embed/owner/imaginerio/original_image/014AM005013"></iframe>
