@@ -12,7 +12,7 @@ const imageryLayers = [
     imageryProvider: {
       cesiumType: 'UrlTemplateImageryProvider',
       url: availableYears.reduce((jsonObject, year) => {
-        jsonObject[year] = `https://irio.axismaps.io/tiles/${year}/all/{z}/{x}/{y}.png`;
+        jsonObject[year] = `https://irio.spatialstudieslab.org/tiles/${year}/all/{z}/{x}/{y}.png`;
         return jsonObject;
       }, {}),
       maximumLevel: 18,
