@@ -4,13 +4,14 @@
     class="layerSwitcher3d"
   >
     <button
-      v-if="isCesiumLoaded && filteredLayers && filteredLayers.length > 0"
+      v-if="filteredLayers && filteredLayers.length > 0"
+      v-lazy-container="{ selector: 'img' }"
       class="layerSwitcher3d__mainButton"
       :class="{'layerSwitcher3d__mainButton--close': menuOpen}"
       @click="openMenu"
     >
       <div class="layerSwitcher3d__wrapMainPreview">
-        <img :src="mainPreviewIconUrl">
+        <img :data-src="mainPreviewIconUrl">
       </div>
     </button>
 
@@ -37,7 +38,7 @@
 
       <keep-alive>
         <LayersCountries
-          v-if="menuOpen && ownerWithLayers"
+          v-if="menuOpen && countryWithLayers"
           :current-pose="currentPose"
           :country-with-layers="countryWithLayers"
           :active-layer="activeLayer"
@@ -70,30 +71,32 @@
 </template>
 
 <script>
+import {
+  BingMapsImageryProvider,
+  Cesium3DTileset,
+  CesiumTerrainProvider,
+  PrimitiveCollection,
+  UrlTemplateImageryProvider,
+  WebMapServiceImageryProvider
+} from 'cesium';
+
 import ClickOutside from 'vue-click-outside';
 
-import IconWrap from '@/assets/images/icons';
-import IconClose from '@/assets/images/icons/Close';
-
-import LayersWorld from '@/components/Viewer3DCtrlLayerWorld';
-import LayersCountries from '@/components/Viewer3DCtrlLayerCountries';
-import LayersOwners from '@/components/Viewer3DCtrlLayerOwners';
-
-import OwnersActivatedJson from '@/layers/Viewer3DOwners/Activated';
 import CountriesActivatedJson from '@/layers/Viewer3DCountries/Activated';
 import CountriesFallbackJson from '@/layers/Viewer3DCountries/Fallback';
 
-import {
-  PrimitiveCollection,
-  Cesium3DTileset,
-  CesiumTerrainProvider,
-  WebMapServiceImageryProvider,
-  UrlTemplateImageryProvider,
-  BingMapsImageryProvider
-} from 'cesium/Cesium';
+import IconClose from '@/assets/images/icons/Close';
+import IconWrap from '@/assets/images/icons';
+
+import LayersCountries from '@/components/Viewer3DCtrlLayerCountries';
+import LayersOwners from '@/components/Viewer3DCtrlLayerOwners';
+import LayersWorld from '@/components/Viewer3DCtrlLayerWorld';
+
+import OwnersActivatedJson from '@/layers/Viewer3DOwners/Activated';
 
 export default {
   name: 'Viewer3DCtrlLayer',
+
   directives: {
     ClickOutside
   },
@@ -115,12 +118,17 @@ export default {
     currentPose: {
       type: Object,
       default: () => {}
-    },
-
-    isCesiumLoaded: {
-      type: Boolean,
-      default: () => false
     }
+  },
+
+  static() {
+    return {
+      reloadImagesDebounced: null,
+      ownersActivated: OwnersActivatedJson,
+      countriesActivated: CountriesActivatedJson,
+      countriesFallback: CountriesFallbackJson,
+      overlaysPrimitives: new PrimitiveCollection()
+    };
   },
 
   data() {
@@ -148,51 +156,58 @@ export default {
   computed: {
     filteredLayers() {
       this.layersUpdate; // To force refresh
-      return this.$viewer3D?.scene?.imageryLayers?._layers || [];
+      return this.viewer3D?.scene?.imageryLayers?._layers || [];
+    }
+  },
+
+  watch: {
+    currentImage:  function () {
+      this.init();
     }
   },
 
   created() {
-    this.reloadImagesDebounced = null;
-    this.ownersActivated = OwnersActivatedJson;
-    this.countriesActivated = CountriesActivatedJson;
-    this.countriesFallback = CountriesFallbackJson;
-    this.overlaysPrimitives = new PrimitiveCollection();
-
-    // Empty Layers (used when route change)
-
-    this.ownerWithLayers = null;
-    this.countryWithLayers = null;
-
-    // Match image metadata with activated layers
-
-    const HasOwnerLayers = this.ownersActivated.find(item => item === this.currentImage.owner.slug);
-    const HasCountryLayers = this.countriesActivated.find(item => item === this.currentPose.country_iso_a2);
-    const HasCountryFallbackLayers = Object.prototype.hasOwnProperty.call(this.countriesFallback, this.currentPose.country_iso_a2); // Special case for example Liechstenstein will fallback to Swiss imagery as their are providing also for them
-
-    // Import layers
-
-    const layersPromise = Promise.all([
-      ...(HasOwnerLayers ? [this.importGroup('Owners', this.currentImage.owner.slug).then(res => { this.ownerWithLayers = res; })] : []),
-      ...(HasCountryLayers ? [this.importGroup('Countries', this.currentPose.country_iso_a2).then(res => { this.countryWithLayers = res; })] : []),
-      ...(HasCountryFallbackLayers ? [this.importGroup('Countries', this.countriesFallback[this.currentPose.country_iso_a2]).then(res => { this.countryWithLayers = res; })] : []),
-      this.importGroup('World', 'World').then(res => { this.worldWithLayers = res; })
-    ]);
-
-    // Select default Layer by priority : 1) Owner 2) Country 3) World
-
-    layersPromise.then(() => {
-      if (HasOwnerLayers) {
-        this.addFirstLayer(this.ownerWithLayers.imageryLayers[0], this.ownerWithLayers.terrainLayers);
-      } else if (HasCountryLayers || HasCountryFallbackLayers) {
-        this.addFirstLayer(this.countryWithLayers.imageryLayers[0], this.countryWithLayers.terrainLayers);
-      } else {
-        this.addFirstLayer(this.worldWithLayers.imageryLayers[0], this.worldWithLayers.terrainLayers);
-      }
-    });
+    this.viewer3D = this.$parent.$parent.viewer3D;
+    // Ensure that we have an owner list to show translation of owner slug in Menu
+    const loadOwners = this.owners.length === 0 ? this.loadOwners() : Promise.resolve();
+    Promise.all([loadOwners]).then(() => { this.init(); });
   },
 
   methods: {
+    init(){
+      // Empty Layers (used when route change)
+
+      this.ownerWithLayers = null;
+      this.countryWithLayers = null;
+
+      // Match image metadata with activated layers
+
+      const HasOwnerLayers = this.ownersActivated.find(item => item === this.currentImage.owner.slug);
+      const HasCountryLayers = this.countriesActivated.find(item => item === this.currentPose.country_iso_a2);
+      const HasCountryFallbackLayers = Object.prototype.hasOwnProperty.call(this.countriesFallback, this.currentPose.country_iso_a2); // Special case for example Liechstenstein will fallback to Swiss imagery as their are providing also for them
+
+      // Import layers
+
+      const layersPromise = Promise.all([
+        ...(HasOwnerLayers ? [this.importGroup('Owners', this.currentImage.owner.slug).then(res => { this.ownerWithLayers = res; })] : []),
+        ...(HasCountryLayers ? [this.importGroup('Countries', this.currentPose.country_iso_a2).then(res => { this.countryWithLayers = res; })] : []),
+        ...(HasCountryFallbackLayers ? [this.importGroup('Countries', this.countriesFallback[this.currentPose.country_iso_a2]).then(res => { this.countryWithLayers = res; })] : []),
+        this.importGroup('World', 'World').then(res => { this.worldWithLayers = res; })
+      ]);
+
+      // Select default Layer by priority : 1) Owner 2) Country 3) World
+
+      layersPromise.then(() => {
+        if (HasOwnerLayers) {
+          this.addFirstLayer(this.ownerWithLayers.imageryLayers[0], this.ownerWithLayers.terrainLayers);
+        } else if (HasCountryLayers || HasCountryFallbackLayers) {
+          this.addFirstLayer(this.countryWithLayers.imageryLayers[0], this.countryWithLayers.terrainLayers);
+        } else {
+          this.addFirstLayer(this.worldWithLayers.imageryLayers[0], this.worldWithLayers.terrainLayers);
+        }
+      });
+    },
+
     addFirstLayer(layer, terrainLayers) {
       const associatedTerrain = layer.associatedTerrain;
 
@@ -206,7 +221,7 @@ export default {
       const terrainProvider = { ...terrain };
       const { cesiumType, ...imageryProvider } = imageryLayer.imageryProvider;
 
-      const viewerLayers = this.$viewer3D.scene.imageryLayers;
+      const viewerLayers = this.viewer3D.scene.imageryLayers;
 
       let year = null;
 
@@ -247,7 +262,7 @@ export default {
         viewerLayers.addImageryProvider(imageryConstruct);
 
         // Set terrain
-        this.$viewer3D.scene.terrainProvider = new CesiumTerrainProvider(terrainProvider);
+        this.viewer3D.scene.terrainProvider = new CesiumTerrainProvider(terrainProvider);
 
         // Force filteredLayer to refresh
         this.layersUpdate++;
@@ -278,8 +293,8 @@ export default {
       const layerPrimitives = new Cesium3DTileset(layer.options);
 
       // Init Overlays primitives collection if doesn't exist
-      if (!this.$viewer3D.scene.primitives.contains(this.overlaysPrimitives)) {
-        this.$viewer3D.scene.primitives.add(this.overlaysPrimitives);
+      if (!this.viewer3D.scene.primitives.contains(this.overlaysPrimitives)) {
+        this.viewer3D.scene.primitives.add(this.overlaysPrimitives);
       }
 
       // Check if primitives was previously added
@@ -319,7 +334,7 @@ export default {
         this.activeOverlaysIds = this.activeOverlaysIds.filter(id => id !== layerId);
       }
       // Refresh Cesium
-      this.$viewer3D.scene.requestRender();
+      this.viewer3D.scene.requestRender();
     },
 
     async importGroup(type, groupInview) {
@@ -394,7 +409,7 @@ export default {
   @apply mr-8;
 }
 .layerSwitcher3d__groupTitle{
-  @apply my-2 cursor-pointer;
+  @apply font-title font-semibold my-2 cursor-pointer;
 }
 
 .layerSwitcher3d__baseLayersList{
@@ -409,7 +424,7 @@ export default {
     }
 
     & button span{
-        @apply text-sm inline-block mt-2;
+        @apply text-sm font-bold inline-block mt-2;
         line-height: 130%;
     }
 }
@@ -428,7 +443,7 @@ export default {
     }
 
     & .checkboxWrapper label {
-      @apply text-sm mb-0;
+      @apply text-sm font-bold mb-0;
     }
 
     & .checkboxWrapper label::before{
@@ -465,6 +480,9 @@ export default {
 /* Current Preview */
 .layerSwitcher3d__wrapPreview--current{
     @apply border-teal-400;
+}
+.modeContribute .layerSwitcher3d__wrapPreview--current{
+    @apply border-orange-400;
 }
 
 /* Hide */

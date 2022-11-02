@@ -8,7 +8,7 @@
       v-tooltip.left="$t('layout.navigation.lookUp')"
       class="absolute"
       style="top:5px;left:50%;transform:translateX(-50%);"
-      @click="lookUp"
+      @click="turn(viewer3D, 'Up')"
     >
       <IconWrap label="lookUp">
         <IconArrow />
@@ -19,7 +19,7 @@
       v-tooltip.left="$t('layout.navigation.lookDown')"
       class="absolute"
       style="bottom:5px;left:50%;transform:translateX(-50%) rotate(180deg);"
-      @click="lookDown"
+      @click="turn(viewer3D, 'Down')"
     >
       <IconWrap label="lookDown">
         <IconArrow />
@@ -39,7 +39,7 @@
       v-tooltip.left="$t('layout.navigation.lookLeft')"
       class="absolute"
       style="left:5px;top:50%;transform:translateY(-50%) rotate(-90deg);"
-      @click="lookLeft"
+      @click="turn(viewer3D, 'Left')"
     >
       <IconWrap label="lookLeft">
         <IconArrow />
@@ -50,7 +50,7 @@
       v-tooltip.left="$t('layout.navigation.lookRight')"
       class="absolute"
       style="right:5px;top:50%;transform:translateY(-50%) rotate(90deg);"
-      @click="lookRight"
+      @click="turn(viewer3D, 'Right')"
     >
       <IconWrap label="lookRight">
         <IconArrow />
@@ -60,37 +60,27 @@
 </template>
 
 <script>
-import IconWrap from '@/assets/images/icons';
 import IconArrow from '@/assets/images/icons/Arrow';
-
 import IconEye from '@/assets/images/icons/Eye';
+import IconWrap from '@/assets/images/icons';
 
-import * as cesiumService from '@/components/Viewer3DCtrlCommon';
+import { turn } from '@/components/Viewer3DCtrlCommon';
 
 export default {
   name: 'Viewer3DCtrlLook',
+
   components: {
     IconWrap,
     IconArrow,
     IconEye
   },
 
-  methods: {
-    lookUp() {
-      cesiumService.turn(this.$viewer3D, 'Up');
-    },
+  mounted() {
+    this.viewer3D = this.$parent.$parent.viewer3D;
+  },
 
-    lookDown() {
-      cesiumService.turn(this.$viewer3D, 'Down');
-    },
-
-    lookLeft() {
-      cesiumService.turn(this.$viewer3D, 'Left');
-    },
-
-    lookRight() {
-      cesiumService.turn(this.$viewer3D, 'Right');
-    }
+  methods:{
+    turn
   }
 };
 </script>

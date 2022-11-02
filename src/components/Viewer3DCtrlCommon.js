@@ -1,4 +1,4 @@
-import { Cartesian3, Math as CesiumMath, Transforms, Model, sampleTerrain, when, Color, ScreenSpaceEventType } from 'cesium/Cesium';
+import { Cartesian3, Math as CesiumMath, Color, Model, sampleTerrain, ScreenSpaceEventType, Transforms, when } from 'cesium';
 
 export function getHeight(cesiumViewer) {
   return new Promise(function (resolve) {
@@ -34,14 +34,18 @@ export function unlockCamera(cesiumViewer) {
   scene.screenSpaceCameraController.enableZoom = true;
 }
 
-export function changeModelScale(cesiumViewer, model, scaleLog) {
+export function changeModelScale(cesiumViewer, models, scaleLog) {
   const scale = Math.pow(10, scaleLog);
-  model.scale = scale;
+  for (const model of models) {
+    model.scale = scale;
+  }
   cesiumViewer.scene.requestRender();
 }
 
-export function deleteModel(cesiumViewer, model) {
-  cesiumViewer.scene.primitives.remove(model);
+export function deleteModel(cesiumViewer, models) {
+  for (const model of models) {
+    cesiumViewer.scene.primitives.remove(model);
+  }
   cesiumViewer.scene.requestRender();
 }
 
@@ -101,28 +105,49 @@ export function setZoom(cesiumViewer, imageHeight, imageWidth, focalImage) {
 }
 
 export function drawModel(cesiumViewer, image, pose) {
-  const origin = Cartesian3.fromDegrees(pose.longitude, pose.latitude, pose.altitude);
-  const modelMatrix = Transforms.eastNorthUpToFixedFrame(origin);
+  const models = [];
+  if (!Array.isArray(pose)) { //single_image, and composite_image only during geolocalisation (1 gltf)
+    const origin = Cartesian3.fromDegrees(pose.longitude, pose.latitude, pose.altitude);
+    const modelMatrix = Transforms.eastNorthUpToFixedFrame(origin);
+    const prim = Model.fromGltf({
+      id: image.id,
+      url:  `${pose.gltf_url}`, //should be the same than image.media.model_3d_url
+      modelMatrix: modelMatrix,
+      scale: 1,
+      incrementallyLoadTextures: false,
+      show: true
+    });
+    models.push(cesiumViewer.scene.primitives.add(prim));
 
-  const prim = Model.fromGltf({
-    id: image.id,
-    url: image.media.model_3d_url || `${process.env.VUE_APP_SMAPSHOT_API_URL}/data/collections/${image.collection?.id}/gltf/${image.id}.gltf`,
-    modelMatrix: modelMatrix,
-    scale: 1,
-    incrementallyLoadTextures: false,
-    show: true
-  });
-
-  return cesiumViewer.scene.primitives.add(prim);
+  } else {
+    for (const po of pose) { //only composite_image in visit mode (multiple gltf)
+      const origin = Cartesian3.fromDegrees(po.longitude, po.latitude, po.altitude);
+      const modelMatrix = Transforms.eastNorthUpToFixedFrame(origin);
+      const prim = Model.fromGltf({
+        id: image.id,
+        url: `${po.gltf_url}`,
+        modelMatrix: modelMatrix,
+        scale: 1,
+        incrementallyLoadTextures: false,
+        show: true
+      });
+      models.push(cesiumViewer.scene.primitives.add(prim));
+    }
+  }
+  return models;
 }
 
-export function hideShowModel(cesiumViewer, model) {
-  model.show = !model.show;
+export function hideShowModel(cesiumViewer, models) {
+  for (const model of models) {
+    model.show = !model.show;
+  }
   cesiumViewer.scene.requestRender();
 }
 
-export function changeModelTransparency(cesiumViewer, model, transparency) {
-  model.color = Color.fromAlpha(Color.WHITE, transparency);
+export function changeModelTransparency(cesiumViewer, models, transparency) {
+  for (const model of models) {
+    model.color = Color.fromAlpha(Color.WHITE, transparency);
+  }
   cesiumViewer.scene.requestRender();
 }
 

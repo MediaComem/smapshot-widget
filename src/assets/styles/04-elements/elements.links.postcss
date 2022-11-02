@@ -1,0 +1,56 @@
+a, .btnLink--fitMode{
+    font-weight:bold;
+    text-decoration:none;
+
+    background-image: url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="1" y2="1" stroke="rgba(226, 226, 226, 1)" /></svg>');
+    background-size: 1px 1px;
+    background-position: 0 .9em;
+    background-repeat: repeat-x;
+
+    &:hover {
+        @apply text-gray-500;
+    }
+
+    &.focus-visible{
+        background:none;
+    }
+}
+
+@supports (text-decoration-thickness: 0.1em){
+    a, .btnLink--fitMode{
+        background:none;
+        text-decoration:underline;
+        text-decoration-color: theme('colors.gray.100');
+        text-underline-offset:0.2rem;
+        text-decoration-thickness: 0.05em;
+
+        &:hover {
+            text-decoration-thickness: 0.1em;
+        }
+
+        &.focus-visible{
+            text-decoration:none;
+        }
+    }
+}
+
+.btnLink--fitMode {
+    @apply text-teal-500 no-underline;
+    &:hover{
+        @apply text-teal-400;
+    }
+}
+
+.modeContribute .btnLink--fitMode{
+    @apply text-orange-500;
+    &:hover{
+        @apply text-orange-400;
+    }
+}
+
+
+a.--no-style,
+a.--no-style:hover{
+    @apply no-underline;
+    background:none;
+}

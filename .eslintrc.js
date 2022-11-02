@@ -6,9 +6,6 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module'
   },
-  plugins: [
-    '@babel'
-  ],
   env: {
     browser: true,
     node: true,
@@ -29,15 +26,6 @@ module.exports = {
       'kebab-case',
       {
         'ignores': []
-      }
-    ],
-    'vue/html-comment-content-newline': ['error',
-      {
-        'singleline': 'always',
-        'multiline': 'always',
-      },
-      {
-        'exceptions': []
       }
     ],
     'vue/html-comment-content-spacing': ['error',

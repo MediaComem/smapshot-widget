@@ -1,0 +1,88 @@
+
+/* purgecss start ignore */
+body{
+  &::after{
+    position:absolute;
+    content: "";
+    width:1;
+    height:1;
+    opacity:0;
+    background-image:url('../../images/icons/success.svg');
+    -svg-mixer-fill: #3598db;
+    background-image:url('../../images/icons/success.svg');
+    -svg-mixer-fill: #86CD5F;
+    background-image:url('../../images/icons/error.svg');
+    -svg-mixer-fill: theme('colors.red.400');
+    background-image:url('../../images/icons/warning.svg');
+    -svg-mixer-fill: #ED9F36;
+    background-image:url('../../images/icons/info.svg');
+    -svg-mixer-fill: #3598db;
+  }
+}
+
+.tostini-plate {
+  @apply fixed bottom-0 w-full flex flex-col items-end mb-8 z-50;
+  height: auto !important;
+}
+
+.tostini-plate .tostini {
+  @apply px-4 pr-5 py-3 mr-4 rounded-full font-body text-sm text-gray-400 bg-white inline-flex items-center border-2;
+  width: auto;
+  min-width:18em;
+  max-width:25rem;
+  margin-top: 0.5rem;
+  margin-bottom:0.5rem;
+  transition: all .5s;
+  transform: translate3d(0, 0, 0);
+
+  &.v-enter, &.v-leave-to{
+    transform: translate3d(125%, 0, 0);
+  }
+
+  &::before{
+    @apply mr-3 flex-shrink-0 border-4;
+    border-radius:50%;
+    content:"";
+    width:20px;
+    height:20px;
+    background-size: 20px 20px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    box-sizing: content-box;
+    background-position: 50% 50%;
+  }
+}
+
+.tostini-plate .tostini[data-type="default"], .tostini-plate .tostini[data-type="info"] {
+  border-color: #d8e9f4;
+  &::before{
+    border-color:#d8e9f4;
+    background-image:url('../../images/icons/info.svg');
+    -svg-mixer-fill: #3598db;
+  }
+}
+.tostini-plate .tostini[data-type="success"] {
+  border-color: #E5F7DB;
+  &::before{
+    border-color: #E5F7DB;
+    background-image:url('../../images/icons/success.svg');
+    -svg-mixer-fill: #86CD5F;
+  }
+}
+.tostini-plate .tostini[data-type="error"] {
+  @apply border-red-50;
+  &::before{
+    @apply border-red-50;
+    background-image:url('../../images/icons/error.svg');
+    -svg-mixer-fill: theme('colors.red.400');
+  }
+}
+.tostini-plate .tostini[data-type="warning"] {
+  border-color: #F7E6D0;
+  &::before{
+    border-color: #F7E6D0;
+    background-image:url('../../images/icons/warning.svg');
+    -svg-mixer-fill: #ED9F36;
+  }
+}
+/* purgecss end ignore */

@@ -9,6 +9,7 @@
         :key="layer.id"
       >
         <button
+          v-lazy-container="{ selector: 'img' }"
           @click="$emit('switch-base-layer', sendImageryAndTerrain(layer, worldWithLayers.terrainLayers))"
         >
           <div
@@ -16,7 +17,7 @@
             :class="{ 'layerSwitcher3d__wrapPreview--current': layer.id === activeLayer.id }"
           >
             <img
-              :src="layer.iconUrl"
+              :data-src="layer.iconUrl"
               alt=""
             >
           </div>
@@ -32,6 +33,7 @@ import { sendImageryAndTerrain } from '@/components/Viewer3DCtrlLayerGroup';
 
 export default {
   name: 'Viewer3DCtrlLayerWorld',
+
   props: {
     worldWithLayers: {
       type: Object,

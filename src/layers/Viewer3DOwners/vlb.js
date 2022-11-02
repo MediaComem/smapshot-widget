@@ -1,8 +1,8 @@
 import {
-  WebMercatorTilingScheme,
   Rectangle,
-  Resource
-} from 'cesium/Cesium';
+  Resource,
+  WebMercatorTilingScheme
+} from 'cesium';
 
 const ownerSlug = 'vlb';
 
@@ -161,7 +161,7 @@ const overlayLayers = [
     id: 'vlb.vogisseilbahn',
     type: 'Cesium3DTileset',
     options: {
-      url: `${process.env.VUE_APP_SMAPSHOT_PROXY_URL}/data/owners/10/tiles/seilbahn/tileset.json`,
+      url: 'https://smapshot.heig-vd.ch/api/v1/data/owners/10/tiles/seilbahn/tileset.json',
       dynamicScreenSpaceError: true,
       preferLeaves: true,
       maximumScreenSpaceError: 8
@@ -171,7 +171,7 @@ const overlayLayers = [
     id: 'vlb.hauptkonturflaechen',
     type: 'Cesium3DTileset',
     options: {
-      url: `${process.env.VUE_APP_SMAPSHOT_PROXY_URL}/data/owners/10/tiles/hauptkonturflaechen/tileset.json`,
+      url: 'https://smapshot.heig-vd.ch/api/v1/data/owners/10/tiles/hauptkonturflaechen/tileset.json',
       dynamicScreenSpaceError: true,
       preferLeaves: true,
       maximumScreenSpaceError: 8

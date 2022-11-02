@@ -1,21 +1,83 @@
 {
   "general": {
+    "visit": "Découvrir",
     "contribute": "Participer",
-    "imageIsNotGelocalised": "Cette image n'est pas géoréférencée en 3D, mais vous pouvez nous aider à le faire.<br/>(moins de 10 minutes sont nécessaires)"
+    "more": "En savoir plus",
+    "collections": "Collections",
+    "of": "de",
+    "images": "images"
   },
   "generic": {
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "create": "Créer",
+    "serverError": "Une erreur est survenue avec le serveur, merci de réessayer plus tard",
     "error": "Une erreur est survenue",
+    "passwordNotLess": "Le mot de passe ne peut pas être inférieur à 6 caractères.",
+    "add": "Ajouter",
     "close": "Fermer",
+    "update": "Mettre à jour",
+    "edit": "Éditer",
+    "reset": "Réinitialiser",
+    "delete": "Supprimer",
+    "settings": "Réglages",
+    "help": "Aide",
+    "submitError": "Signaler une erreur",
+    "loginEdit": "Vous devez vous connecter pour sauver votre modification | Vous devez vous connecter pour sauver vos modifications",
+    "editTitle": "Éditer le titre",
+    "editCaption": "Éditer la description",
+    "ownerLockedEdit": "Le propriétaire n'autorise pas l'édition",
+    "continue": "Continuer",
+    "tutorial": "Tutoriel",
+    "access": {
+      "public": "Public",
+      "private": "Privé"
+    },
+    "imageNotPublic": "Désolé, cette images n'est pas publique",
+    "addCaption": "Ajouter une description",
+    "showMore": "Voir plus",
+    "desktopOnly": "Désolé, Géolocaliser n'est disponible que pour les ordinateurs de bureau",
     "shortcut": {
       "arrowLeftRight": "Flèche Gauche/Droite",
       "arrowUpDown": "Flèche Haut/Bas"
+    },
+    "rgpd": {
+      "banner": {
+        "message": "Ce site web utilise des cookies pour vous garantir la meilleure expérience possible sur notre site web.",
+        "yes": "Autoriser les cookies",
+        "no": "Refuser les cookies"
+      }
     }
   },
   "layout": {
+    "filters": {
+      "title": "titre",
+      "photo": "photo | photos",
+      "date": "date | dates",
+      "keyword": "mot-clé | mots-clés",
+      "inArea": "dans cette zone",
+      "sortBy": "Trier par",
+      "from": "du",
+      "to": "au",
+      "today": "Aujourd'hui",
+      "clearAll": "Effacer tous les filtres",
+      "keywordPlaceholder": "Avion, Lausanne, ...",
+      "distance": "distance",
+      "selectCollection": "Choissisez une collections",
+      "period": "Période"
+    },
     "navigation": {
+      "computerOnly": "Seulement avec un ordinateur.",
+      "returnHome": "Retourner à l'accueil",
+      "language": "langue | langues",
       "zoomIn": "Zoom avant",
       "zoomOut": "Zoom arrière",
       "fullscreen": "Plein écran",
+      "selectLang": "Choisissez une langue",
+      "selectYear": "Choisissez une année",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "goBack": "Retourner sur la page précédente",
       "showImage": "Voir l'image",
       "hideImage": "Cacher l'image",
       "showImgSlider": "Voir le bandeau d'images",
@@ -24,10 +86,17 @@
       "depth": "Facteur de profondeur",
       "altitude": "Altitude",
       "coordinates": "Coordonnées",
+      "goUp": "Monter",
+      "goDown": "Descendre",
+      "goForward": "Aller en avant",
+      "goBackward": "Aller en arrière",
+      "goLeft": "Aller à gauche",
+      "goRight": "Aller à droite",
       "lookUp": "Regarder en haut",
       "lookDown": "Regarder en bas",
       "lookLeft": "Regarder à gauche",
       "lookRight": "Regarder à droite",
+      "noImageInThisArea": "Aucune photo n'a été trouvée dans cette zone, essayez de faire un zoom arrière ou de supprimer des filtres",
       "mapLayers": {
         "world": "monde",
         "basemapAt": {
@@ -68,9 +137,386 @@
         "country": "pays | pays"
       }
     },
+    "search": {
+      "placeholder": "Centrer sur un lieu..."
+    },
+    "account": {
+      "login": "Connexion",
+      "username": "Nom d'utilisateur",
+      "email": "Email",
+      "password": "Mot de passe",
+      "newsletter": "Je souhaite recevoir la newsletter",
+      "connect": "Se connecter",
+      "connectWith": "Se connecter avec",
+      "createAccount": "Créer un compte",
+      "activation": {
+        "title": "Activation de compte"
+      },
+      "passwordForgot": {
+        "link": "J'ai oublié mon mot de passe",
+        "title": "Réinitialiser votre mot de passe",
+        "description": "Veuillez entrer votre e-mail ci-dessous. Vous allez recevoir un e-mail avec le lien pour réinitialiser votre mot de passe.",
+        "success": "Vous allez recevoir un nouveau mot de passe d'ici quelques minutes !"
+      },
+      "passwordReset": {
+        "newPassword": "Nouveau mot de passe",
+        "confirmNewPassword": "Confirmer votre nouveau mot de passe",
+        "success": "Votre mot de passe a été changé avec succès !"
+      },
+      "disconnect": "Se déconnecter",
+      "account": "Compte"
+    },
+    "icons": {
+      "locked": "Verrouillé",
+      "shareWith": "Partager avec",
+      "email": "E-mail"
+    },
+    "metadataSlider": {
+      "previous": "Métadonnées précédentes",
+      "next": "Métadonnées suivantes"
+    },
+    "collections": {
+      "all": "Toutes les collections",
+      "collection": "collection | collections"
+    },
+    "period": {
+      "all": "Toutes les périodes",
+      "lastWeek": "7 derniers jours",
+      "lastMonth": "30 derniers jours",
+      "lastYear": "Dernière année"
+    },
     "owners": {
       "all": "Tous les propriétaires",
       "owner": "propriétaire | propriétaires"
+    },
+    "observations": {
+      "observation": "Observation | Observations",
+      "enableMode": "Activer le mode d'observation",
+      "disableMode": "Désactiver le mode d'observation",
+      "readme": "Si vous avez remarqué des éléments intéressants dans l'image, vous pouvez les indiquer en dessinant un rectangle sur l'image. Vous pouvez aussi écrire une observation générale.",
+      "titleAdd": "Ajouter une observation",
+      "titleUpdate": "Mettre à jour une observation",
+      "placeholder": "Écrivez le contenu de votre observation ici",
+      "listOf": "Liste des observations",
+      "edit": "Éditer une observation",
+      "delete": "Supprimer une observation",
+      "numberOf": "Nombre d'observations",
+      "notValidatedYet": "Vous êtes le seul à voir cette observation tant qu'elle n'a pas été validée.",
+      "hideListOf": "Cacher la liste des observations",
+      "showListOf": "Voir la liste des observations",
+      "isGeneral": "Mon observation porte sur l'ensemble de l'image.",
+      "noObs": "Il n'y a pas encore d'observations sur cette image."
+    }
+  },
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "Accueil"
+      },
+      "slogan": "La machine à remonter le temps participative",
+      "ranking": {
+        "title": "Participant·e·s",
+        "rank": "Rang",
+        "name": "Nom",
+        "geolocalisedImages": "Images géolocalisées",
+        "corrections": "Titres ou descriptions corrigés",
+        "mysterious": "Images mystère"
+      },
+      "infos": {
+        "title": "Géolocaliser en 3D les images d’archives",
+        "description": "Tel est le but de la plateforme Smapshot en recréant un globe virtuel du temps passés. Les photographies issues de diverses collections permettent de remonter le temps jusqu’à la fin du 19ème siècle avec une très haute résolution. La plateforme permet à des volontaires d'aligner les images avec le globe virtuel et ainsi de les géolocaliser en 3 dimensions !",
+        "members": "{n} membres",
+        "collections": "{n} collections",
+        "geolocalised": "{n} images géolocalisées",
+        "fromYear": "Depuis 2017"
+      },
+      "owners": "Propriétaires de collection",
+      "slogan_exp": "Dans le temps, il n'y avait pas de GPS. Aidez-nous à géolocaliser des photos historiques du monde entier.",
+      "challenge": "Challenge actuel",
+      "extract": "Comment extraire des données des images ?",
+      "add_collection": "Comment ajouter sa propre collection?",
+      "pictureOfFrom": "{percentage}% sur {images} images provenant de {owner}",
+      "technicalProcess": "Processus technique",
+      "developmentDocumentation": "Documentation de développement",
+      "timeMachine": {
+        "aletsch42": "Glacier d'Aletsch, Suisse 1949/2018"
+      },
+      "sponsors": {
+        "ethz": "Bibliothèque de l'École polytechnique fédérale de Zurich",
+        "swisstopo": "Office fédéral de topographie swisstopo",
+        "migrosPourCentCulturel": "Migros pour-cent culturel"
+      }
+    },
+    "visit": {
+      "meta": {
+        "title": "Visiter"
+      },
+      "tutorial": {
+        "title": "- Découvrir une image",
+        "DiscoverHomeOne": "Utilisez votre souris pour vous déplacer sur la carte ou zoomer. La liste des images en dessous se met à jour en fonction de la zone visible sur la carte. Vous pouvez aussi utiliser la recherche en haut à gauche pour chercher un lieu précis.",
+        "DiscoverHomeTwo": "Lorsque vous survolez une image, sa position s'affiche sur la carte. De manière similaire, si vous survolez un point sur la carte, l'image sera sélectionnée en dessous. Lors du survol d'un point sur la carte le footprint de l'image est affiché sur celle-ci et représente la zone géographique visible sur l'image.",
+        "DiscoverHomeThree": "Sélectionnez simplement une image ou un point sur la carte pour passer à l'écran détaillé avec plus d'informations sur l'image et sa position dans le globe 3D."
+      }
+    },
+    "visitImage": {
+      "showMap": "Retour à la carte",
+      "download": "Télécharger",
+      "shop": "Acheter",
+      "share": "Partager",
+      "georeferencer": "Géoréférenceur",
+      "anonymous_volunteer": "Volontaire anonyme",
+      "photographer": "Photographe",
+      "owner": "Propriétaire",
+      "submitError": "Signaler une erreur",
+      "contribute": "Géolocaliser",
+      "unableToContribute": "Non-géolocalisable ?",
+      "otherMetada": "Autres métadonnées",
+      "license": "Licence",
+      "original_id": "ID du propriétaire",
+      "numberView": "Nombre de vues",
+      "swissTopo3d": "Voir ou cacher les bâtiments 3D de Suisse",
+      "newGeolocalisation": "Nouvelle géolocalisation",
+      "continueGeolocalisation": "Continuer avec le dernier essai",
+      "tutorial": {
+        "title": "- Comment explorer l'image",
+        "PhotoInfoOne": "Vous pouvez changer la transparence et/ou profondeur avec les options dans la vue 3D afin de comparer l'image au paysage actuel. Vous pouvez aussi zoomer/dézoomer la vue ou l'image.",
+        "PhotoInfoTwo": "Vous pouvez changer la couche cartographique affichée sur le modèle 3D. Sur la gauche de la vue, vous verrez une mini carte, cliquez là pour voir la liste des options disponibles pour ce pays. Voici un exemple des options pour la Suisse.",
+        "PhotoInfoThree": "Sur la gauche, vous avez plus d'options pour télécharger l'image et lire ses détails. La plupart des images présentent un lien pour obtenir plus d'informations et explorer les images sur le site des propriétaires.",
+        "PhotoInfoFour": "Pour revenir en arrière et sélectionner une autre image, cliquez sur {backButton} en haut à gauche."
+      }
+    },
+    "updates": {
+      "meta": {
+        "title": "Nouveautés"
+      }
+    },
+    "credits": {
+      "meta": {
+        "title": "Crédits"
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact"
+      },
+      "team": "L'équipe Smapshot",
+      "add_collection": "Voulez-vous ajouter des images à Smapshot ?",
+      "add_private": "Si vous êtes un particulier et que vous voudriez ajouter quelques images dans Smapshot, cette fonctionalité sera bientôt disponible. Si vous avez un compte sur Smapshot vous serez averti par email.",
+      "add_company": "Si vous faites partie d'une institution et que vous voudriez ajouter une collection à Smapshot et en retour profiter des métadonnées géographiques, contactez-nous."
+    },
+    "404": {
+      "title": "Page introuvable",
+      "description": "Oups ! Quelque chose a mal tourné et nous n'avons pas pu trouver la page que vous cherchiez."
+    },
+    "geolocalise": {
+      "stopGeoloc": "Arrêter la géolocalisation",
+      "stepNumber": "Étape {0}",
+      "tutorial": {
+        "title1": "- Positionner l'indicateur",
+        "MarkPhotoOne": "Positionner l'indicateur à l'endroit d'où vous pensez que la photo a été prise en cliquant sur la carte. Pour une meilleure précision, vous pouvez utiliser la souris pour déplacer et zoomer la carte. En haut à gauche de la carte, vous pouvez chercher un lieu pour centrer automatiquement la carte sur celui-ci.",
+        "MarkPhotoTwo": "Vous pouvez voir des indicateurs sur la carte. Ceux-ci indiquent les positions probables de l'image d'après ses métadonnées. Une fois satisfait, cliquez suivant à gauche pour choisir la direction sur la page suivante.",
+        "title2": "- Sélectionner la direction",
+        "Step2": "Vous devez sélectionner la direction de la flêche en cliquant une zone sur la carte. Cela indique la direction de l'image. Observez bien l'image à gauche et sélectionner la bonne direction. Une fois terminé, cliquez sur suivant.",
+        "title3": "- Sélectionner les points pour aligner l'image",
+        "Step3": "Vous pouvez toujours déplacer la carte avec votre souris ou les boutons de navigation en bas à droite de l'écran. Déplacez votre souris sur la carte pour qu'ils apparaissent. Vous pouvez également zoomer dans l'image pour une plus grande précision.",
+        "step3MarkPoint": "Tout d'abord sélectionner un point sur l'image ou sur la carte. Si vous avez commencé par l'image, vous devez alors sélectionnez le point correspondant sur la carte. Vous pouvez ensuite continuer avec les paires de points suivants. Vous avez besoin d'au moins quatre points avant de pouvoir calculer la position de l'image. De manière générale, les sommets, croisements, coins de bâtiments (au sol), rivières etc sont des repères intéressants. Vous aurez besoin de 6 points minimum pour finaliser la géolocalisation.",
+        "step3RemovePoint": "Si vous souhaitez supprimer un point, sélectionnez le simplement et un bouton supprimer apparaîtra pour le supprimer (ainsi que le point associé si présent).",
+        "step3Compute": "Une fois au moins six points ajoutés, vous pouvez sélectionner {compute} pour aligner l'image sur la vue 3D.",
+        "step3transparency": "Vous pouvez utiliser les boutons pour changer la transparence de l'image et valider l'alignement.",
+        "step3ComputeError": "Une fois la position de l'image calculée, vous pouvez vérifier vos points sur l'image à gauche. Si certains points n'ont pas pu être alignés correctement, vous verrez des indicateurs rouges. Veuillez supprimer et corriger les points qui ne sont pas correctement alignés. Vous pouvez ensuite recalculer la position de l'image.",
+        "title4": "- Modification des métadonnées de l'image et ajout d'observations",
+        "Step4": "Certains propriétaires d'images permettent de soumettre des corrections des données. Dans ce cas, vous pouvez simplement sélectionner l'icône d'édition pour proposer un changement. **Vous devez être identifié pour faire des modifications sur les métadonnées.",
+        "step4Observations": "Vous pouvez aussi utiliser votre souris pour définir une zone sur l'image. Un champ texte apparaîtra sur la gauche pour inscrire les détails.",
+        "title5": "- Bravo",
+        "step5": "Vous avez terminé la géolocalisation pour cette image. Vous pouvez retourner à la page principale en cliquant sur {backToMap} en haut à gauche de la page."
+      },
+      "step1": {
+        "title": "Ce document contient-il plus d'une prise de vue?",
+        "one": "Un seul point de vue",
+        "multiple": "Multiple ou photomontage"
+      },
+      "step2": {
+        "title": "Séparez les prises de vues",
+        "description": "Dessinez des rectangles pour séparer l'image en ses différentes prises de vue.",
+        "add": "Ajouter"
+      },
+      "step3": {
+        "title": "Positionner le photographe",
+        "description": "Positionner le marqueur en cliquant ou avec le glissez-déposé à l'endroit approximatif de la photo. Les cercles oranges sont créés par les algorithmes de Smapshot, ils vous donnent des pistes pour trouver le bon endroit.",
+        "shotFrom": "L'image a été prise depuis:",
+        "theAir": "le ciel",
+        "theGround": "le sol",
+        "markerIs": "La position du marqueur est:",
+        "approximate": "approximative",
+        "exact": "exacte"
+      },
+      "step4": {
+        "title": "Indiquer la direction de la photographie",
+        "description": "Cliquez sur la carte pour changer la direction de la photographie",
+        "geolocalize": "Géolocaliser",
+        "another": "Retour"
+      },
+      "step5": {
+        "title": "Aligner la photo avec le globe virtuel",
+        "description": "Cliquez sur au moins 6 points similaires tels que des sommets ou des croisements pour valider la position du photographe.",
+        "description_panorama": "Répétez sur chacune des prises de vue sans ordre particulier. Pour la première prise de vue, 10 points similaires bien répartis sont requis.",
+        "pointErrorsTooHigh": "L'algorithme ne semble pas converger. Les prises de vue sont peut-être prises depuis différents endroits. Vous pouvez essayer de calculer de manière simplifiée ou de corriger les points."
+      },
+      "step6": {
+        "titleMetadata": "Éditer les métadonnées",
+        "descriptionMetadata": "Vous pouvez modifier le titre et la description, s'ils ne sont pas corrects ou incomplets.",
+        "titleObservations": "Dessiner des observations",
+        "descriptionObservations": "Si vous avez remarqué des éléments intéressants dans l'image, vous pouvez les indiquer en dessinant un rectangle sur l'image."
+      },
+      "step7": {
+        "title": "Bravo !",
+        "description": "Vous avez réussi toutes les étapes ! Merci pour votre excellent travail. Votre géolocalisation sera validée par un de nos modérateurs. Vous pouvez voir le statut de l'image dans votre compte."
+      },
+      "navigation": {
+        "removeAllPoints": "Effacer tous les points",
+        "deleteLinkPoints": "Effacer le point n° {0}",
+        "reset3dView": "Réinitialiser la vue 3D",
+        "computePosition": "Calculer la position",
+        "computePositionSimplified": "Calcul simplifié",
+        "finish": "Terminer"
+      },
+      "validation": {
+        "clickGlobe": "Le point suivant doit être sur le globe",
+        "clickImage": "Le point suivant doit être sur l'image",
+        "onePointWorldMissing": "1 point sur le globe est manquant",
+        "onePointImageMissing": "1 point sur l'image est manquant",
+        "clickOnBuildings": "Vous ne pouvez pas ajouter un point sur un bâtiment",
+        "pointContainErrors": "{n} point a une erreur, veuillez le remplacer et recalculer | {n} points ont une erreur, veuillez le remplacer et recalculer",
+        "pointNotCalculated": "{n} point n'est pas encore calculé | {n} points ne sont pas encore calculés",
+        "pointMissing": "Il manque encore {n} point | il manque encore {n} points",
+        "notDistributedEnough": "La distribution des points est inférieure à 30% ({n}%). Veuillez ajouter ou déplacer des points pour couvrir une plus grande surface.",
+        "loginObservation": "Vous devez vous connecter pour sauver votre observation | Vous devez vous connecter pour sauver vos observations",
+        "fieldEmpty": "Le champ est vide",
+        "continueWithoutLogin": {
+          "title": "Continuer sans se connecter",
+          "description": "Si vous continuez, votre contribution sera anonymisée. Vous ne pourrez pas voir les mises à jour et participer au classement des volontaires."
+        },
+        "title": "Validation",
+        "remark": "Remarque",
+        "reject": "Rejeter",
+        "improve": "Améliorer",
+        "validate": "Valider",
+        "cancel": "Annuler",
+        "save": "Sauver",
+        "validationFinished": "La validation est terminée. Vous pouvez fermer cet onglet.",
+        "reprojectionErrorsLegend": {
+          "title": "Type d'erreurs",
+          "lowError": "Basse",
+          "mediumError": "Moyenne",
+          "highError": "Haute"
+        }
+      }
+    },
+    "problem": {
+      "message": "Cette image est déjà signalée pour la/les raison(s) suivante(s) :",
+      "type": "Type",
+      "selectAType": "Sélectionner un type",
+      "indicateAReason": "Indiquer une raison",
+      "loginReport": "Vous devez vous connecter pour signaler un problème"
+    },
+    "contribute": {
+      "meta": {
+        "title": "Contribuer"
+      },
+      "tutorial": {
+        "titleHome": "- Comment contributer",
+        "titlePhoto": "- Commencer une contribution",
+        "ContributeHomeOne": "Déplacer vous dans une zone où vous souhaiteriez géolocaliser une image. Comme dans le mode découverte, la liste des images disponibles et dynamique et se met à jour en fonction de la région sur la carte.",
+        "ContributeHomeTwo": "Les marqueurs sur la carte indique la position probable de l'image d'après ses métadonnées.",
+        "ContributeHomeThree": "Vous pouvez également rechercher un lieu dans le champ de recherche en haut à gauche. Une fois l'image sélectionnée, vous serez envoyé sur la page suivante où vous aurez plus d'informations sur l'image et pourrez démarrer la géolocalisation.",
+        "ContributePhoto": "Si vous le souhaitez, vous pouvez démarrer la géolocalisation de l'image en cliquant sur {GeoButton}",
+        "ContributePhotoStartAgain": "Une fois commencé, vous pouvez choisir d' 'Arrêter la géolocalisation' et retourner à cette page. Vous aurez alors l'option de {continue} ou démarrer de zéro {newGeo}",
+        "ContributePhotoEdit": "Selon les propriétaires, vous pourrez télécharger ou éditer l'image. Vous pouvez aussi ajouter une zone sur l'image pour mettre des {observations}observations ou écrire une observation générale sur l'ensemble de l'image."
+      },
+      "imageLocked": "L'image est en train d'être géolocalisée par un autre participant"
+    },
+    "extract": {
+      "maintitle": "Comment extraire des données des images ?",
+      "stereo_title": "Stéréo-photogrammétrie",
+      "stereo_text": "La monophotogrammétrie s'oppose à la stéréo-photogrammétrie. En stéréo-photogrammétrie, une collection d'images superposées est utilisée pour calculer un modèle 3D, qui peut être texturé par les images. La stéréo-photogrammétrie est l'état de l'art de la génération et l'extraction de données géographiques à partir d'images. Dans Smapshot, peu d'images peuvent être utilisées avec un logiciel de stéréo-photogrammétrie : seules les images prises le jour-même avec un grand chevauchement peuvent être utilisées de cette façon. ",
+      "stereo_link": "Voir la liste des logiciels de photogrammétrie",
+      "mono_title": "Mono-photogrammétrie",
+      "mono_textOne": "Cependant, actuellement la plupart des images d'archives ne peuvent pas être traitées avec un logiciel de stéréo-photogrammétrie. En effet, les images ont été prises de manière aléatoire sans qu'il ne soit nécessaire de couvrir le territoire de manière homogène (comme dans les projets de photogrammétrie classiques). En mélangeant plusieurs collections, dans des zones célèbres, on peut obtenir une meilleure couverture et un meilleur recouvrement. Mais alors, les variations dues au temps, aux saisons et à l'illumination défient les algorithmes de correspondance d'images.",
+      "mono_textTwo": "Par conséquent, celui qui veut extraire l'information géographique des images d'archives doit utiliser la mono-photogrammétrie. Avec une seule image, il est impossible de récupérer la profondeur de la scène. Cependant, une fois que l'emplacement et l'orientation de l'image sont calculés avec précision, l'image peut être alignée avec un modèle 3D, exactement de la même manière que dans la visionneuse 3D de Smapshot. Ainsi, la coordonnée 3D d'un pixel peut être récupérée. Les systèmes qui fournissent la relation directe entre une image et un modèle 3D sont appelés monoplotters. Actuellement, les monoplotters sont utilisés pour extraire des informations d'images historiques ou pour surveiller une zone avec une seule caméra.",
+      "monoplotting_title": "Les outils de monoplotting",
+      "monoplotting_text": "Si vous êtes intéressés à tester ou à utiliser ce genre d'outils, il existe (au moins) deux solutions :",
+      "wsl_title": "L'outil WSL Monoplotting",
+      "wsl_text": "L'institut WSL a développé un monoplotter. Il est utilisé par de nombreux scientifiques dans de nombreuses publications.",
+      "qgis_title": "QGIS plugin Pic2Map",
+      "qgis_text": "Ce monoplotter pour QGIS a été développé lors d'un projet de master à l'EPFL. Il est expérimental. Ses principaux avantages sont son intégration dans un SIG pour une interaction directe entre l'image et la carte.",
+      "conclusion_title": "Smapshot et le monoplotting",
+      "conclusion_text": "Claudio Bozzini (développeur de l'outil de monoplotting WSL) et nous sommes intéressés par vos études de cas et vos besoins en matière de monoplotting. Si l'intérêt des communautés professionnelles et scientifiques se confirme, nous souhaiterions dans le futur améliorer l'interaction de Smapshot avec les monoplotters, ou ajouter des fonctionnalités de monoplotting à Smapshot."
+    },
+    "devDoc": {
+      "maintitle": "Intégration de Smapshot avec l'API",
+      "api_information": "Information relative à l'API",
+      "api_information_text": "Les différentes requêtes HTTP permettant de travailler avec l'API sont disponible à l'adresse suivante:",
+      "api_information_link": "Voir la liste des requêtes",
+      "plugin_information": "Composants Web pouvant être intégrés",
+      "plugin_description": "Ces composants ont été créés avec ",
+      "plugin_lit": "Lit",
+      "plugin_pictures": "Smapshot Pictures",
+      "plugin_pictures_description": "Ce composant permet d'avoir une pré-visualisation des photos disponible sur smapshot. L'image suivante fournit une vue globale du plugin:",
+      "plugin_pictures_image_1": "Illustration du plugin smapshot pictures",
+      "plugin_pictures_more_information": "Chaque image est cliquable et redirige vers ",
+      "plugin_smapshot_link": "smapshot.heig-vd.ch",
+      "plugin_pictures_configuration": "Comment utiliser le plugin",
+      "plugin_pictures_configuration_1": "Ajouter le script CDN suivant à votre header : ",
+      "plugin_pictures_configuration_cdn_script": "<script type=\"module\" src=\"https://cdn.jsdelivr.net/gh/Vince17/wc-smapshot-pictures@master/dist/components/element_smapshot.js\"></script>",
+      "plugin_pictures_configuration_2": "Pour utiliser ce composant web, vous devez ajouter le tag suivant dans votre HTML : ",
+      "plugin_pictures_html_tag": "<element_smapshot></element_smapshot>",
+      "plugin_pictures_configuration_description": "Il y a 6 attributs à ce plugin: ",
+      "plugin_pictures_tag_configuration_1": "lat (vous devez définir la latitude)",
+      "plugin_pictures_tag_configuration_2": "long (vous devez définir la longitude)",
+      "plugin_pictures_tag_configuration_3": "looping (permet de glisser à l'infini)",
+      "plugin_pictures_tag_configuration_4": "limit (déffini le nombre d'images qui pourront être visualiser, par défaut, cette valeur est fixée à 10)",
+      "plugin_pictures_tag_configuration_5": "lightMode (pour forcer le mode jour)",
+      "plugin_pictures_tag_configuration_6": "darkMode (pour forcer le mode nuit)",
+      "plugin_pictures_tag_configuration_default": "Par défaut, le composant web détecte le thème de l'appareil pour définir le mode jour/nuit:",
+      "plugin_pictures_image_2": "Illustration smapshot pictures jour/nuit",
+      "plugin_map": "Smapshot Map",
+      "plugin_map_description": "Ce second composant web affiche une carte avec l'empreinte d'une image smapshot spécifique. L'image suivante fournit une vue générale du plugin:",
+      "plugin_map_image_1": "Illustration du plugin smapshot map",
+      "plugin_map_more_information": "Vous pouvez cliquer sur le cercle sur la carte pour voir un aperçu (popup) de la photo et de son titre. Si vous cliquez sur le titre ou la photo, vous serez redirigé vers ",
+      "plugin_map_configuration_cdn_script": "<script type=\"module\" src=\"https://cdn.jsdelivr.net/gh/Vince17/wc-smapshot-pictures@master/dist/components/map_smapshot.js\"></script>",
+      "plugin_map_html_tag": "<map_smapshot></map_smapshot>",
+      "plugin_map_configuration_description": "Il y a 7 attributs à ce plugin: ",
+      "plugin_map_tag_configuration_1": "original_id (ID de votre photo à partir de smapshot) ",
+      "plugin_map_tag_configuration_2": "colorStyle (par défaut, la couleur est bleue, mais vous pouvez la changer)",
+      "plugin_map_tag_configuration_3": "attributionCust (par défaut le texte est 'Map data © OpenStreetMap')",
+      "plugin_map_tag_configuration_4": "urlMapLight (URL de la carte de lumière)",
+      "plugin_map_tag_configuration_5": "urlMapDark (URL de la carte sombre)",
+      "plugin_map_tag_configuration_6": "lightMode (pour forcer le mode jour)",
+      "plugin_map_tag_configuration_7": "darkMode (pour forcer le mode nuit)",
+      "plugin_map_image_2": "Illustration smapshot map jour/nuit",
+      "contact_title": "Nous contacter",
+      "contact_text": "Si vous intégrer smapshot à votre application, merci de prendre contact avec nous à l'adresse : ",
+      "live_title": "Exemple d'intégration",
+      "live_image_1": "Vorarlberg",
+      "plugin_more_title": "Plus d'information",
+      "plugin_more_information": "Vous trouverez plus d'information au lien suivant"
+    },
+    "badReport": {
+      "meta": {
+        "title": "Signaler un problème"
+      },
+      "type": "Type",
+      "selectAType": "Sélectionner un type",
+      "geolocNotCorrect": "La géolocalisation n'est pas juste",
+      "behindRelief": "La position calculé se trouve derrière le relief",
+      "other": "Autre",
+      "loginReport": "Vous devez vous connecter pour signaler un problème"
+    },
+    "press": {
+      "title": "Revue de presse"
+    },
+    "policy": {
+      "title": "Politique de confidentialité des données"
     }
   },
   "country": {
@@ -78,5 +524,18 @@
     "BR": "Brésil",
     "CH": "Suisse",
     "LI": "Liechtenstein"
+  },
+  "owners": {
+    "ethz": {
+      "slogan": "La contribution de l'ETHZ à la machine à remonter le temps.",
+      "slogan_exp": "Découvrez les archives de l'ETHZ et aidez-nous à toutes les géolocaliser.",
+      "collections_title": "Les collections de l'ETHZ"
+    }
+  },
+  "author": {
+    "builtBy": "Smapshot est produit par:",
+    "heigvd": "Haute École d'ingénierie et de gestion du canton de Vaud",
+    "insit": "Institut d'ingénierie du territoire (insit)",
+    "mei": "Institut d'ingénierie des Médias (MEI)"
   }
 }

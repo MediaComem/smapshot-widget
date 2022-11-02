@@ -20,13 +20,16 @@
           v-for="imageryLayer in country.imageryLayers"
           :key="imageryLayer.id"
         >
-          <button @click="$emit('switch-base-layer', sendImageryAndTerrain(imageryLayer, country.terrainLayers))">
+          <button
+            v-lazy-container="{ selector: 'img' }"
+            @click="$emit('switch-base-layer', sendImageryAndTerrain(imageryLayer, country.terrainLayers))"
+          >
             <div
               class="layerSwitcher3d__wrapPreview"
               :class="{ 'layerSwitcher3d__wrapPreview--current': imageryLayer.id === activeLayer.id }"
             >
               <img
-                :src="imageryLayer.iconUrl"
+                :data-src="imageryLayer.iconUrl"
                 alt=""
               >
             </div>
@@ -61,13 +64,14 @@
 </template>
 
 <script>
-import { hasGroupActiveBaseLayer, sendImageryAndTerrain, getClassFormattedFrom } from '@/components/Viewer3DCtrlLayerGroup';
+import { getClassFormattedFrom, hasGroupActiveBaseLayer, sendImageryAndTerrain } from '@/components/Viewer3DCtrlLayerGroup';
 
-import CountriesActivatedJson from '@/layers/Viewer3DCountries/Activated';
 import BorderCountriesJson from '@/layers/Viewer3DCountries/Borders';
+import CountriesActivatedJson from '@/layers/Viewer3DCountries/Activated';
 
 export default {
   name: 'Viewer3DCtrlLayerCountries',
+
   props: {
     currentPose: {
       type: Object,
@@ -90,6 +94,13 @@ export default {
     }
   },
 
+  static() {
+    return {
+      listCountriesActivated: CountriesActivatedJson,
+      listBorderCountries: BorderCountriesJson
+    };
+  },
+
   data() {
     return {
       borderCountriesWithLayers: []
@@ -103,9 +114,6 @@ export default {
   },
 
   created() {
-    this.listCountriesActivated = CountriesActivatedJson;
-    this.listBorderCountries = BorderCountriesJson;
-
     this.getCountryAndBorderCountries();
   },
 

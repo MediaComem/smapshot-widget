@@ -8,7 +8,6 @@
       @keydown.left="changeTransparencyKeyboard('down')"
     />
     <div
-      v-if="isModelLoaded"
       class="flex"
     >
       <button
@@ -131,21 +130,23 @@
 </template>
 
 <script>
+import { changeModelScale, changeModelTransparency, hideShowModel } from '@/components/Viewer3DCtrlCommon';
+
 import GlobalEvents from 'vue-global-events';
 
-import { shortcutDefinition } from '@/utils/shortcut';
-
-import IconWrap from '@/assets/images/icons';
 import IconArrow from '@/assets/images/icons/Arrow';
+import IconDepth from '@/assets/images/icons/Depth';
 import IconImageHide from '@/assets/images/icons/ImageHide';
 import IconImageShow from '@/assets/images/icons/ImageShow';
 import IconTransparency from '@/assets/images/icons/Transparency';
-import IconDepth from '@/assets/images/icons/Depth';
 
-import * as cesiumService from '@/components/Viewer3DCtrlCommon';
+import IconWrap from '@/assets/images/icons';
+
+import { shortcutDefinition } from '@/utils/style';
 
 export default {
-  name: 'Viewer3DCtrlImage',
+  name: 'Viewer3DCtrlImageBar',
+
   components: {
     IconWrap,
     IconArrow,
@@ -154,13 +155,6 @@ export default {
     IconTransparency,
     IconDepth,
     GlobalEvents
-  },
-
-  props: {
-    isModelLoaded: {
-      type: Boolean,
-      default: () => false
-    }
   },
 
   data() {
@@ -185,10 +179,6 @@ export default {
   },
 
   computed: {
-    modeGeolocalisation() {
-      return (this.$route.name === 'AlignPoints') || (this.$route.name === 'ValidateAlignPoints');
-    },
-
     toggleShowHideImageText() {
       const msg = this.isModelVisible ? this.$t('layout.navigation.hideImage') : this.$t('layout.navigation.showImage');
       return msg + this.shortcutDefinition('i');
@@ -196,12 +186,17 @@ export default {
 
     transparencyForCesium() {
       return this.transparencySlider.value / 100;
-    }
+    },
+  },
+
+  mounted() {
+    this.viewer3D = this.$parent.$parent.viewer3D;
   },
 
   methods: {
     changeCesiumDepth() {
-      cesiumService.changeModelScale(this.$viewer3D, this.$image3D, this.depthSlider.value);
+      const image3D = this.$parent.$parent.image3D;
+      changeModelScale(this.viewer3D, image3D, this.depthSlider.value);
     },
 
     changeDepthKeyboard(dir) {
@@ -215,7 +210,8 @@ export default {
     },
 
     changeCesiumTransparency() {
-      cesiumService.changeModelTransparency(this.$viewer3D, this.$image3D, this.transparencyForCesium);
+      const image3D = this.$parent.$parent.image3D;
+      changeModelTransparency(this.viewer3D, image3D, this.transparencyForCesium);
     },
 
     changeTransparencyKeyboard(dir) {
@@ -229,7 +225,8 @@ export default {
     },
 
     hideShowImage() {
-      cesiumService.hideShowModel(this.$viewer3D, this.$image3D);
+      const image3D = this.$parent.$parent.image3D;
+      hideShowModel(this.viewer3D, image3D);
       this.isModelVisible = !this.isModelVisible;
     },
 
@@ -251,6 +248,7 @@ export default {
     -moz-appearance:textfield;
   }
 }
+
 .controlPanel__slider{
   @apply mx-1;
   -webkit-appearance: none;
@@ -324,9 +322,11 @@ export default {
     background: theme('colors.gray.100');
   }
 }
+
 .controPanel__sliderArrow{
   transform: rotate(180deg);
 }
+
 .controPanel__sliderArrow--open{
   transform: rotate(0deg);
 }

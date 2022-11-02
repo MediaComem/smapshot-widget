@@ -21,6 +21,16 @@
   @apply bg-teal-300 rounded;
 }
 
+.modeContribute .scroll-x{
+  &:hover,
+  &:focus {
+    scrollbar-color: theme('colors.orange.300') theme('colors.white');
+  }
+  &::-webkit-scrollbar-thumb{
+     @apply bg-orange-300;
+  }
+}
+
 .scroll-y {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;

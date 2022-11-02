@@ -1,7 +1,7 @@
 /* Main Actions Buttons with background and border */
 
 .btn {
-  @apply rounded my-2 mr-2 py-3 px-5;
+  @apply font-semibold rounded my-2 mr-2 py-3 px-5 text-base leading-none;
   padding-top:0.9rem;
 
   &:last-child{
@@ -17,6 +17,99 @@
   .btn{
     @apply text-sm px-4;
   }
+}
+
+.btn--squared{
+  @apply rounded-none;
+}
+
+.btn__fitMode{
+@apply text-white bg-teal-500;
+  &:hover{
+    @apply text-white bg-teal-400;
+  }
+  &:hover svg {
+    @apply text-teal-400;
+  }
+}
+
+.modeContribute .btn__fitMode{
+  @apply text-white bg-orange-500;
+  &:hover{
+    @apply text-white bg-orange-400;
+  }
+  &:hover svg {
+    @apply text-orange-400;
+  }
+}
+
+.btn.btn__visit {
+  @apply text-white bg-teal-500;
+  &:hover{
+    @apply text-white bg-teal-400;
+  }
+  &:hover svg {
+    @apply text-teal-400;
+  }
+}
+
+.btn.btn__contribute {
+  @apply text-white bg-orange-500;
+  &:hover{
+    @apply text-white bg-orange-400;
+  }
+  &:hover svg {
+    @apply text-orange-400;
+  }
+}
+
+.btn.btn__secondary {
+  @apply bg-white text-gray-400 border border-solid border-gray-150;
+  &:hover,{
+    @apply bg-white text-gray-500 border-gray-300;
+  }
+  &:hover svg {
+    @apply text-gray-300;
+  }
+}
+
+
+.btn.btn[disabled], .btn.btn[disabled]:hover{
+  /* Inactive elements doesn't not require a sufficient color constrast */
+  @apply bg-gray-50 text-gray-200 border border-solid border-gray-150;
+  cursor: not-allowed;
+}
+.btn.btn[disabled], .btn.btn[disabled]:hover{
+  & svg{
+    @apply text-gray-200;
+  }
+}
+
+/* ImageView Metadata */
+
+.btn.btn__metadata{
+  @apply relative flex items-center font-bold text-base text-gray-400 my-0 mr-5 p-0 h-full;
+  background:none;
+  &:hover, &:hover svg, &:hover span{
+    @apply text-gray-400 no-underline border-gray-400;
+    background:none;
+  }
+  &:hover::after,
+  &.btn__metadata--active::after{
+    @apply absolute bg-gray-50 rounded-lg p-4;
+    content: "";
+    width: calc(100% + 1.2rem);
+    z-index: -1;
+    left: -.5rem;
+    top: -.4rem;
+  }
+  & span{
+    line-height: 1.2;
+  }
+}
+
+.btn.btn__metadata--active{
+  @apply text-orange-500;
 }
 
 /* TOOLS */

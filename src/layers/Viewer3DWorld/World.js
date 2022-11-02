@@ -1,6 +1,4 @@
-import {
-  BingMapsStyle
-} from 'cesium/Cesium';
+import { BingMapsStyle } from 'cesium';
 
 const imageryLayers = [
   {
