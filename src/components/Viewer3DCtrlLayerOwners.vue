@@ -1,8 +1,6 @@
 <template>
   <div class="layerSwitcher3d__category">
-
     <!-- Owner title -->
-
     <h4 class="layerSwitcher3d__categoryTitle">
       {{ $tc('layout.owners.owner', 2) }}
     </h4>
@@ -13,9 +11,7 @@
       <summary class="layerSwitcher3d__groupTitle">
         {{ currentImage.owner.name }}
       </summary>
-
       <!-- Layers list -->
-
       <ul class="layerSwitcher3d__baseLayersList">
         <li
           v-for="imageryLayer in ownerWithLayers.imageryLayers"
@@ -36,9 +32,7 @@
             </div>
             <span v-html="$t('layout.navigation.mapLayers.' + imageryLayer.id)" />
           </button>
-
           <!-- Layer year selector -->
-
           <div
             v-if="imageryLayer.associatedYears && imageryLayer.associatedYears.length > 0 "
             class="inline-flex overflow-x-hidden overflow-y-hidden relative"
@@ -70,9 +64,7 @@
           </div>
         </li>
       </ul>
-
       <!-- Owner overlays -->
-
       <ul
         v-if="ownerWithLayers.overlayLayers.length > 0"
         class="layerSwitcher3d__overlaysList"
@@ -104,7 +96,6 @@ import { getClassFormattedFrom, hasGroupActiveBaseLayer, sendImageryAndTerrain }
 
 export default {
   name: 'Viewer3DCtrlLayerOwners',
-
   props: {
     currentImage: {
       type: Object,

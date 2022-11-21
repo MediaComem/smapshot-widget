@@ -146,7 +146,6 @@ import { shortcutDefinition } from '@/utils/style';
 
 export default {
   name: 'Viewer3DCtrlImageBar',
-
   components: {
     IconWrap,
     IconArrow,
@@ -186,7 +185,7 @@ export default {
 
     transparencyForCesium() {
       return this.transparencySlider.value / 100;
-    },
+    }
   },
 
   mounted() {

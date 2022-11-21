@@ -9,7 +9,6 @@
         :key="layer.id"
       >
         <button
-          v-lazy-container="{ selector: 'img' }"
           @click="$emit('switch-base-layer', sendImageryAndTerrain(layer, worldWithLayers.terrainLayers))"
         >
           <div
@@ -33,7 +32,6 @@ import { sendImageryAndTerrain } from '@/components/Viewer3DCtrlLayerGroup';
 
 export default {
   name: 'Viewer3DCtrlLayerWorld',
-
   props: {
     worldWithLayers: {
       type: Object,

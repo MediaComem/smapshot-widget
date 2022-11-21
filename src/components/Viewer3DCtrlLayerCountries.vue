@@ -71,7 +71,6 @@ import CountriesActivatedJson from '@/layers/Viewer3DCountries/Activated';
 
 export default {
   name: 'Viewer3DCtrlLayerCountries',
-
   props: {
     currentPose: {
       type: Object,

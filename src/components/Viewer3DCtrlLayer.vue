@@ -96,7 +96,6 @@ import OwnersActivatedJson from '@/layers/Viewer3DOwners/Activated';
 
 export default {
   name: 'Viewer3DCtrlLayer',
-
   directives: {
     ClickOutside
   },
@@ -161,16 +160,17 @@ export default {
   },
 
   watch: {
-    currentImage:  function () {
-      this.init();
+    currentImage: {
+      // the callback will be called immediately after the start of the observation
+      immediate: true,
+      handler (val, oldVal) {
+        this.init();
+      }
     }
   },
 
   created() {
     this.viewer3D = this.$parent.$parent.viewer3D;
-    // Ensure that we have an owner list to show translation of owner slug in Menu
-    const loadOwners = this.owners.length === 0 ? this.loadOwners() : Promise.resolve();
-    Promise.all([loadOwners]).then(() => { this.init(); });
   },
 
   methods: {
@@ -480,9 +480,6 @@ export default {
 /* Current Preview */
 .layerSwitcher3d__wrapPreview--current{
     @apply border-teal-400;
-}
-.modeContribute .layerSwitcher3d__wrapPreview--current{
-    @apply border-orange-400;
 }
 
 /* Hide */

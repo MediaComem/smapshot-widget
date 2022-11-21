@@ -1,4 +1,4 @@
-import { Cartesian3, Math as CesiumMath, Color, Model, sampleTerrain, ScreenSpaceEventType, Transforms, when } from 'cesium';
+import { Cartesian3, Math as CesiumMath, Color, Model, sampleTerrain, ScreenSpaceEventType, Transforms } from 'cesium';
 
 export function getHeight(cesiumViewer) {
   return new Promise(function (resolve) {
@@ -10,7 +10,7 @@ export function getHeight(cesiumViewer) {
     }];
     const level = cesiumViewer.terrainProvider._availability._maximumLevel || 16;
     const promise = sampleTerrain(cesiumViewer.terrainProvider, level, position);
-    when(promise, function (updatedPosition) {
+    promise.then(updatedPosition => {
       const groundHeight = updatedPosition[0].height;
       const delta = Math.abs(cameraHeight - groundHeight) / 5;
       resolve(delta);

@@ -32,7 +32,6 @@ import { zoom } from '@/components/Viewer3DCtrlCommon';
 
 export default {
   name: 'Viewer3DCtrlZoom',
-
   components: {
     IconWrap,
     IconPlus,

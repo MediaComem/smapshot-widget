@@ -1,8 +1,5 @@
 <template>
   <nav>
-    <GlobalEvents
-      @keyup.shift.d="modeDev = !modeDev"
-    />
     <div
       class="controls controls--hide"
       :class="{ 'controls--show': mouseOnView || controlsFocused }"
@@ -29,16 +26,10 @@
           :scene.prop="viewer3D.scene"
         />
 
-        <div
-          v-if="modeContribute && !currentPoseApriori.locationLocked"
-          class="flex"
-        >
-        </div>
-
         <div class="flex my-2">
           <ControlLook />
           <div class="ml-2">
-            <ControlZoom v-if="!modeContribute" />
+            <ControlZoom />
             <ControlFullscreen />
           </div>
         </div>
@@ -47,80 +38,65 @@
   </nav>
 </template>
 
-<script>
-import '@geoblocks/cesium-view-cube'; //litElement Component
+  <script>
+  import '@geoblocks/cesium-view-cube'; //litElement Component
 
-import ControlFullscreen from '@/components/Viewer3DCtrlFullscreen';
-import ControlImageBar from '@/components/Viewer3DCtrlImageBar';
-import ControlLayerSwitcher from '@/components/Viewer3DCtrlLayer';
-import ControlLook from '@/components/Viewer3DCtrlLook';
-import ControlZoom from '@/components/Viewer3DCtrlZoom';
+  import ControlFullscreen from '@/components/Viewer3DCtrlFullscreen';
+  import ControlImageBar from '@/components/Viewer3DCtrlImageBar';
+  import ControlLayerSwitcher from '@/components/Viewer3DCtrlLayer';
+  import ControlLook from '@/components/Viewer3DCtrlLook';
+  import ControlZoom from '@/components/Viewer3DCtrlZoom';
 
-import GlobalEvents from 'vue-global-events';
-
-
-export default {
-  name: 'Viewer3DCtrl',
-
-  components: {
-    GlobalEvents,
-    ControlImageBar,
-    ControlLayerSwitcher,
-    ControlLook,
-    ControlZoom,
-    ControlFullscreen
-  },
-
-  props: {
-    mouseOnView: {
-      type: Boolean,
-      default: () => false
+  export default {
+    name: 'Viewer3DCtrl',
+    components: {
+      ControlImageBar,
+      ControlLayerSwitcher,
+      ControlLook,
+      ControlZoom,
+      ControlFullscreen
     },
 
-    isImageLoaded: {
-      type: Boolean,
-      default: () => false
+    props: {
+      mouseOnView: {
+        type: Boolean,
+        default: () => false
+      },
+
+      isImageLoaded: {
+        type: Boolean,
+        default: () => false
+      },
+
+      isViewerLoaded: {
+        type: Boolean,
+        default: () => false
+      },
+
+      currentImage: {
+        type: Object,
+        default: () => {}
+      },
+
+      currentPose: {
+        type: Object,
+        default: () => {}
+      }
     },
 
-    isViewerLoaded: {
-      type: Boolean,
-      default: () => false
+    data() {
+      return {
+        modeDev: false,
+        controlsFocused: false
+      };
     },
 
-    currentImage: {
-      type: Object,
-      default: () => {}
+    mounted() {
+      this.viewer3D = this.$parent.viewer3D;
     },
 
-    currentPose: {
-      type: Object,
-      default: () => {}
-    },
-
-    currentPoseApriori: {
-      type: Object,
-      default: () => {}
-    }
-  },
-
-  static() {
-    return {
-      unsubscribePose: null
-    };
-  },
-
-  data() {
-    return {
-      modeDev: false,
-      controlsFocused: false
-    };
-  },
-
-  mounted() {
-    this.viewer3D = this.$parent.viewer3D;
-  }
-};
-</script>
+  };
+  </script>
 
 <style lang="postcss">
 :root{

@@ -17,11 +17,10 @@
       :is-image-loaded="isImageLoaded"
       :current-image="currentImage"
       :current-pose="currentPose"
-      :current-pose-apriori="currentPoseApriori"
     />
     <InfoBar
       :mouse-on-view="mouseOnView"
-      :pose="currentPoseApriori || currentPose"
+      :pose="currentPose"
     >
       <div id="cesiumCredits" />
     </InfoBar>
@@ -32,8 +31,8 @@
 
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 
-import { Cartesian3, Cartographic, Color, Math as MathCesium, sampleTerrain, Viewer, when } from 'cesium';
-import { deleteModel, drawModel, setCloseZoom } from '@/components/Viewer3DCtrlCommon';
+import { Cartesian3, Cartographic, Color, Math as MathCesium, sampleTerrain, Viewer } from 'cesium';
+import { lockCamera, deleteModel, drawModel, setCloseZoom } from '@/components/Viewer3DCtrlCommon';
 
 import Controls from '@/components/Viewer3DCtrl';
 import InfoBar from '@/components/Viewer3DInfoBar';
@@ -42,7 +41,6 @@ import ViewerDefaultOptions from './Viewer3DDefaultOptions.json';
 
 export default {
   name: 'Viewer3D',
-
   components: {
     Controls,
     InfoBar
@@ -59,12 +57,7 @@ export default {
       default: () => {}
     },
 
-    currentPoseApriori: {
-      type: Object,
-      default: () => {}
-    },
-
-    currentPoses: { //recieve currentPoses only from viewer visit and store/explorer.js
+    currentPoses: { //recieve currentPoses only if panorama position
       type: Array,
       default: () => {}
     },
@@ -96,7 +89,6 @@ export default {
     this.viewer3D = new Viewer('cesiumContainer', viewerOptions);
 
     this.isViewerLoaded = true;
-    this.$emit('ready');
 
     // Scene Options
     this.viewer3D.scene.globe.baseColor = new Color.fromCssColorString('#DDD');
@@ -113,16 +105,11 @@ export default {
 
     // Performance optimization (by default full resolution)
     this.viewer3D.resolutionScale = 1;
-  },
 
-  beforeDestroy() {
-    if (this.checkCameraHeightTimeout) {
-      clearTimeout(this.checkCameraHeightTimeout);
-    }
-    if (this.viewer3D) {
-      this.viewer3D.entities.removeAll();
-      this.viewer3D.destroy();
-    }
+    // Load images
+    lockCamera(this.viewer3D);
+    this.setViewToPose();
+    this.loadGltf();
   },
 
   methods: {
@@ -219,16 +206,16 @@ export default {
       });
     },
 
-    async loadGltf(currentImage) {
+    async loadGltf() {
       this.deleteLastGltf();
       this.loading = true;
 
       //currentPoses should exist only for composite_image in visit mode.
       const pose = this.currentPoses ? this.currentPoses : this.currentPose;
-      this.image3D = drawModel(this.viewer3D, currentImage, pose);
+      this.image3D = drawModel(this.viewer3D, this.currentImage, pose);
       this.viewer3D.scene.requestRender();
 
-      return when(this.image3D.readyPromise).then(() => {
+      return Promise.resolve(this.image3D.readyPromise).then(() => {
         this.loading = false;
         this.isImageLoaded = true;
       });
@@ -245,7 +232,7 @@ export default {
 
 <style lang="postcss">
 #cesiumContainer {
-  @apply relative h-full;
+  @apply relative h-full w-full;
 }
 
 .slider--open #cesiumContainer {

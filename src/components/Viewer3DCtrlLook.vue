@@ -68,7 +68,6 @@ import { turn } from '@/components/Viewer3DCtrlCommon';
 
 export default {
   name: 'Viewer3DCtrlLook',
-
   components: {
     IconWrap,
     IconArrow,
