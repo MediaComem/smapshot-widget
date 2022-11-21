@@ -8,6 +8,7 @@
       v-if="isImageGeoreferenced"
       :current-image="currentImage"
       :current-pose="currentPose"
+      :current-poses="currentPoses"
     />
     <div
       v-else-if="Number(currentImage.id)"
@@ -50,7 +51,8 @@ export default {
     return {
       attributesLoaded: false,
       currentImage: {},
-      currentPose: {}
+      currentPose: {},
+      currentPoses: []
     };
   },
 
@@ -86,9 +88,10 @@ export default {
       fetch(`${process.env.VUE_APP_SMAPSHOT_API_URL}/owners/${owner_id_slug}/original_images/${original_id}/attributes`)
         .then(response => response.json())
         .then(data => {
-          const { pose, ...otherAttributes } = data;
+          const { pose, poses, ...otherAttributes } = data;
 
           this.currentPose = pose;
+          this.currentPoses = poses;
           this.currentImage = otherAttributes;
         })
         .finally(() => {

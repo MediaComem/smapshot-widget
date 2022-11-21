@@ -4,7 +4,7 @@
       id="label-zoomIn"
       v-tooltip.left="$t('layout.navigation.zoomIn')"
       class="btn btn__tools"
-      @mousedown="zoomIn"
+      @mousedown="zoom(viewer3D, 'In')"
     >
       <IconWrap label="zoomIn">
         <IconPlus />
@@ -14,7 +14,7 @@
       id="label-zoomOut"
       v-tooltip.left="$t('layout.navigation.zoomOut')"
       class="btn btn__tools"
-      @mousedown="zoomOut"
+      @mousedown="zoom(viewer3D, 'Out')"
     >
       <IconWrap label="zoomOut">
         <IconMinus />
@@ -24,12 +24,11 @@
 </template>
 
 <script>
+import IconMinus from '@/assets/images/icons/Minus';
+import IconPlus from '@/assets/images/icons/Plus';
 import IconWrap from '@/assets/images/icons';
 
-import IconPlus from '@/assets/images/icons/Plus';
-import IconMinus from '@/assets/images/icons/Minus';
-
-import * as cesiumService from '@/components/Viewer3DCtrlCommon';
+import { zoom } from '@/components/Viewer3DCtrlCommon';
 
 export default {
   name: 'Viewer3DCtrlZoom',
@@ -39,14 +38,12 @@ export default {
     IconMinus
   },
 
-  methods: {
-    zoomIn() {
-      cesiumService.zoom(this.$viewer3D, 'In');
-    },
+  mounted() {
+    this.viewer3D = this.$parent.$parent.viewer3D;
+  },
 
-    zoomOut() {
-      cesiumService.zoom(this.$viewer3D, 'Out');
-    }
+  methods:{
+    zoom
   }
 };
 </script>

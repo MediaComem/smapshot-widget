@@ -13,6 +13,22 @@ input[type=checkbox].sr-only.focus-visible~label{
     outline-offset:.15em;
 }
 
+.modeContribute .focus-visible,
+.modeContribute [data-focus-visible-added],
+.modeContribute button[data-focus-visible-added],
+.modeContribute button[type][data-focus-visible-added],
+.modeContribute input[type=checkbox].sr-only.focus-visible~label{
+    outline-color: theme('colors.orange.300');
+}
+
+input[type].focus-visible,
+textarea.focus-visible,
+.modeContribute input[type].focus-visible,
+.modeContribute textarea.focus-visible{
+  @apply outline-none;
+  border: 3px auto theme('colors.gray.500');
+}
+
 // Weird behaviour between Firefox and Chrome - outline-style auto work in Chrome but not firefox, dashed work in firefox but has some issue on chrome (for example on title challenge)
 @supports (-moz-appearance:none) {
     .focus-visible,

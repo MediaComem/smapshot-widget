@@ -1,8 +1,6 @@
 <template>
   <div class="layerSwitcher3d__category">
-    <!--
- Owner title
--->
+    <!-- Owner title -->
     <h4 class="layerSwitcher3d__categoryTitle">
       {{ $tc('layout.owners.owner', 2) }}
     </h4>
@@ -13,29 +11,28 @@
       <summary class="layerSwitcher3d__groupTitle">
         {{ currentImage.owner.name }}
       </summary>
-      <!--
- Layers list
--->
+      <!-- Layers list -->
       <ul class="layerSwitcher3d__baseLayersList">
         <li
           v-for="imageryLayer in ownerWithLayers.imageryLayers"
           :key="imageryLayer.id"
         >
-          <button @click="switchLayer(imageryLayer)">
+          <button
+            v-lazy-container="{ selector: 'img' }"
+            @click="switchLayer(imageryLayer)"
+          >
             <div
               class="layerSwitcher3d__wrapPreview"
               :class="{ 'layerSwitcher3d__wrapPreview--current': imageryLayer.id === activeLayer.id }"
             >
               <img
-                :src="imageryLayer.iconUrl"
+                :data-src="imageryLayer.iconUrl"
                 alt=""
               >
             </div>
             <span v-html="$t('layout.navigation.mapLayers.' + imageryLayer.id)" />
           </button>
-          <!--
- Layer year selector
--->
+          <!-- Layer year selector -->
           <div
             v-if="imageryLayer.associatedYears && imageryLayer.associatedYears.length > 0 "
             class="inline-flex overflow-x-hidden overflow-y-hidden relative"
@@ -44,7 +41,7 @@
           >
             <p
               aria-hidden="true"
-              class="dropdown pointer-events-none text-xs"
+              class="dropdown font-bold pointer-events-none text-xs"
             >
               {{ imageryLayer.chosenYear || (imageryLayer.id === activeLayer.id && activeLayer.year ? activeLayer.year : imageryLayer.defaultYear) }}
             </p>
@@ -67,9 +64,7 @@
           </div>
         </li>
       </ul>
-      <!--
- Owner overlays
--->
+      <!-- Owner overlays -->
       <ul
         v-if="ownerWithLayers.overlayLayers.length > 0"
         class="layerSwitcher3d__overlaysList"
@@ -97,7 +92,7 @@
 </template>
 
 <script>
-import { hasGroupActiveBaseLayer, sendImageryAndTerrain, getClassFormattedFrom } from '@/components/Viewer3DCtrlLayerGroup';
+import { getClassFormattedFrom, hasGroupActiveBaseLayer, sendImageryAndTerrain } from '@/components/Viewer3DCtrlLayerGroup';
 
 export default {
   name: 'Viewer3DCtrlLayerOwners',

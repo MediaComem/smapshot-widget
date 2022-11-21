@@ -6,24 +6,31 @@
       @focusin="controlsFocused = true"
       @focusout="controlsFocused = false"
     >
-      <Layers
+      <ControlLayerSwitcher
+        v-if="isViewerLoaded && currentImage"
         class="controlLayerSwitcher controlPanel"
         :current-image="currentImage"
         :current-pose="currentPose"
-        :is-cesium-loaded="isCesiumLoaded"
       />
-      <ImageBar
+      <ControlImageBar
+        v-if="isImageLoaded"
         class="controlPanel flex items-center"
-        :is-model-loaded="isModelLoaded"
       />
 
-      <div class="controlPanel controlPanel__3dnavigation">
-        <div class="flex my-2">
-          <Look />
+      <div
+        v-if="isViewerLoaded"
+        class="controlPanel controlPanel__3dnavigation"
+      >
+        <cesium-view-cube
+          v-if="modeDev.gizmo"
+          :scene.prop="viewer3D.scene"
+        />
 
+        <div class="flex my-2">
+          <ControlLook />
           <div class="ml-2">
-            <Zoom />
-            <Fullscreen />
+            <ControlZoom />
+            <ControlFullscreen />
           </div>
         </div>
       </div>
@@ -32,27 +39,40 @@
 </template>
 
   <script>
-  import Layers from '@/components/Viewer3DCtrlLayer';
-  import ImageBar from '@/components/Viewer3DCtrlImage';
+  import '@geoblocks/cesium-view-cube'; //litElement Component
 
-  import Look from '@/components/Viewer3DCtrlLook';
-
-  import Zoom from '@/components/Viewer3DCtrlZoom';
-  import Fullscreen from '@/components/Viewer3DCtrlFullscreen';
-
-  import { when } from 'cesium/Cesium';
+  import ControlFullscreen from '@/components/Viewer3DCtrlFullscreen';
+  import ControlImageBar from '@/components/Viewer3DCtrlImageBar';
+  import ControlLayerSwitcher from '@/components/Viewer3DCtrlLayer';
+  import ControlLook from '@/components/Viewer3DCtrlLook';
+  import ControlZoom from '@/components/Viewer3DCtrlZoom';
 
   export default {
     name: 'Viewer3DCtrl',
     components: {
-      Layers,
-      ImageBar,
-      Look,
-      Zoom,
-      Fullscreen
+      ControlImageBar,
+      ControlLayerSwitcher,
+      ControlLook,
+      ControlZoom,
+      ControlFullscreen
     },
 
     props: {
+      mouseOnView: {
+        type: Boolean,
+        default: () => false
+      },
+
+      isImageLoaded: {
+        type: Boolean,
+        default: () => false
+      },
+
+      isViewerLoaded: {
+        type: Boolean,
+        default: () => false
+      },
+
       currentImage: {
         type: Object,
         default: () => {}
@@ -61,74 +81,53 @@
       currentPose: {
         type: Object,
         default: () => {}
-      },
-
-      mouseOnView: {
-        type: Boolean,
-        default: () => false
-      },
-
-      isCesiumLoaded: {
-        type: Boolean,
-        default: () => false
       }
     },
 
     data() {
       return {
-        isModelLoaded: false,
+        modeDev: false,
         controlsFocused: false
       };
     },
 
     mounted() {
-      this.checkModelLoaded();
+      this.viewer3D = this.$parent.viewer3D;
     },
 
-    updated() {
-      this.checkModelLoaded();
-    },
-
-    methods: {
-      checkModelLoaded() {
-        if (this.$image3D && this.$image3D.readyPromise) {
-          when(this.$image3D.readyPromise).then(() => {
-            this.isModelLoaded = true;
-          });
-        }
-      }
-    }
   };
   </script>
 
-  <style lang="postcss">
-  .controlPanel{
-    @apply absolute z-40;
-  }
-  .controlLayerSwitcher{
-    @apply z-50;
-  }
-  .controls--hide{
-    opacity:0;
-    transition:opacity 300ms;
-  }
-  .controls--show{
-    opacity:1;
-  }
-  @media only screen and (max-width: 450px) {
-    /* For small screen: */
-    .controls--show {
-      opacity:0;
-    }
-  }
+<style lang="postcss">
+:root{
+  --cesium-view-cube-fill-color: rgba(255,255,255,.95);
+  --cesium-view-cube-stroke-color: theme('colors.gray.500');
+}
 
-    @media only screen and (max-height: 450px) {
-    /* For small screen: */
-    .controls--show {
-      opacity:0;
-    }
-  }
-  .controlPanel__3dnavigation{
-    bottom: 50px;right:0;
-  }
-  </style>
+.nyancat{
+  @apply absolute z-50;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.controlPanel{
+  @apply absolute z-40;
+}
+
+.controlLayerSwitcher{
+  @apply z-50;
+}
+
+.controls--hide{
+  opacity:0;
+}
+
+.controls--show{
+  opacity:1;
+}
+
+.controlPanel__3dnavigation{
+  bottom: 50px;right:0;
+}
+</style>

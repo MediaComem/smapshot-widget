@@ -1,21 +1,14 @@
 const path = require('path');
 
 const webpack = require('webpack');
-const CopywebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// Path to Cesium
-const cesiumSource = 'node_modules/cesium/Source';
-const cesiumWorkers = '../Build/Cesium/Workers';
-
-const PUBLIC_PATH = process.env.VUE_APP_PUBLIC_PATH || '/';
-
-function decodeParseProxyURL(url){
-  const proxyURL = decodeURIComponent(url.replace(/^\/proxy\/(.+)$/,'$1'));
+function decodeParseProxyURL(url) {
+  const proxyURL = decodeURIComponent(url.replace(/^\/proxy\/(.+)$/, '$1'));
   return new URL(proxyURL);
 }
 
 module.exports = {
-  publicPath: PUBLIC_PATH,
   pluginOptions: {
     i18n: {
       enableInSFC: false
@@ -24,44 +17,53 @@ module.exports = {
   parallel: false,
   configureWebpack: {
     output: {
-      filename: '[name].[hash].js',
-      path: path.resolve(__dirname, 'dist'),
-      // Needed to compile multiline strings in Cesium
-      sourcePrefix: ''
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'dist')
     },
     node: {
-      // Resolve node module use of fs
-      fs: 'empty',
-      Buffer: false,
-      http: 'empty',
-      https: 'empty',
-      zlib: 'empty'
+      global: true
     },
     resolve: {
+      fallback: {
+        fs: false,
+        http: false,
+        https: false,
+        zlib: false,
+        url: false,
+        Buffer: false
+      },
+      mainFields: ['module', 'main'],
       alias: {
-        cesium: path.resolve(__dirname, cesiumSource)
+        '@root': __dirname // Used to import tailwind config in component
       }
     },
-    plugins: [
-      // Copy Cesium Assets, Widgets, and Workers to a static directory
-      new CopywebpackPlugin([
-        { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' }
-      ]),
-      new CopywebpackPlugin([
-        { from: path.join(cesiumSource, 'Assets'), to: 'Assets' }
-      ]),
-      new CopywebpackPlugin([
-        { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' }
-      ]),
-      new webpack.DefinePlugin({
-        // Define relative base path in cesium for loading assets
-        CESIUM_BASE_URL: JSON.stringify('/')
-      })
-    ],
+    module: {
+      unknownContextCritical: false,
+      unknownContextRegExp: /\/cesium\/cesium\/Source\/Core\/buildModuleUrl\.js/,
+      rules: [
+        {
+          test: /\.(png|gif|jpg|jpeg|svg|xml|json|czml|glb)$/,
+          include: path.resolve(__dirname, 'node_modules/cesium/Source'),
+          use: ['url-loader']
+        },
+        {
+          // Strip cesium pragmas
+          test: /\.js$/,
+          enforce: 'pre',
+          include: path.resolve(__dirname, 'node_modules/cesium/Source'),
+          sideEffects: false,
+          use: [{
+            loader: 'strip-pragma-loader',
+            options: {
+              pragmas: {
+                debug: false
+              }
+            }
+          }]
+        }
+      ]
+    },
     optimization: {
-      namedChunks: (process.env.NODE_ENV === 'development'),
-      runtimeChunk: 'single',
-      moduleIds: 'hashed',
       usedExports: true,
       splitChunks: {
         cacheGroups: {
@@ -75,30 +77,19 @@ module.exports = {
         }
       }
     },
-    module: {
-      // Disable handling of unknown requires
-      unknownContextRegExp: /$^/,
-      unknownContextCritical: false,
-      rules: [
-        {
-          // Strip cesium pragmas
-          test: /\.js$/,
-          enforce: 'pre',
-          include: path.resolve(__dirname, cesiumSource),
-          sideEffects: false,
-          use: [
-            {
-              loader: 'strip-pragma-loader',
-              options: {
-                pragmas: {
-                  debug: false
-                }
-              }
-            }
-          ]
-        }
-      ]
-    }
+    plugins: [
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'node_modules/cesium/Build/Cesium/Workers', to: 'Workers' },
+          { from: 'node_modules/cesium/Build/Cesium/ThirdParty', to: 'ThirdParty' },
+          { from: 'node_modules/cesium/Build/Cesium/Assets', to: 'Assets' },
+          { from: 'node_modules/cesium/Build/Cesium/Widgets', to: 'Widgets' }
+        ] }),
+      new webpack.DefinePlugin({
+        // Define relative base path in cesium for loading assets
+        CESIUM_BASE_URL: JSON.stringify('/')
+      })
+    ]
   },
   chainWebpack: config => {
     // SVG Loader
@@ -110,10 +101,6 @@ module.exports = {
       .end();
   },
   devServer: {
-    overlay: {
-      warnings: false,
-      errors: true
-    },
     proxy: {
       '/proxy/*': {
         logLevel: 'silent',

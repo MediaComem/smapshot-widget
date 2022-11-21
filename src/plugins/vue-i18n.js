@@ -36,7 +36,7 @@ export function loadLanguageAsync(lang) {
   return import(/* webpackChunkName: "lang-[request]" */ `@/locales/${lang}.json`).then(
     response => {
       loadedLanguages.push(lang);
-      i18n.setLocaleMessage(lang, response);
+      i18n.setLocaleMessage(lang, response.default);
       setI18nLanguage(lang);
     }
   );

@@ -28,32 +28,37 @@
 
 /* purgecss start ignore */
 
-/* 01. Settings */
+// 01. Settings
+@import '01-settings/settings.variables.postcss';
+@import '01-settings/settings.typography.postcss';
 
-/* 02. Tools */
+// 02. Tools
 
-/* 03. Generic */
-@import '03-generic/generic.focusVisible.postcss';
+// 03. Generic
 @import '03-generic/generic.selection.postcss';
 @import '03-generic/generic.scrollbar.postcss';
+@import '03-generic/generic.focusVisible.postcss';
 
-/* 04. Elements */
+// 04. Elements
 @import '04-elements/elements.all.postcss';
 @import '04-elements/elements.body.postcss';
+@import '04-elements/elements.html.postcss';
+@import '04-elements/elements.links.postcss';
 @import '04-elements/elements.form.postcss';
 
-/* 05. Objects */
-@import '05-objects/objects.tooltip.postcss';
+// 05. Objects
+@import '05-objects/objects.multipane.postcss';
+@import '05-objects/objects.tooltip.postcss'; // Keep tooltip before popover
 @import '05-objects/objects.popover.postcss';
+@import '05-objects/objects.tostini.postcss';
+@import '~vue-loading-overlay/dist/vue-loading.css';
 
-/* 06. Components */
-
+// 06. Components
 @import '06-components/components.button.postcss';
-@import '06-components/components.checkBox.postcss';
 
-/* 99. Utilities */
 
 /* purgecss end ignore */
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

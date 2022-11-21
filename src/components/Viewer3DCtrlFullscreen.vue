@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import IconWrap from '@/assets/images/icons';
-
 import IconFullscreen from '@/assets/images/icons/Fullscreen';
+import IconWrap from '@/assets/images/icons';
 
 import screenfull from 'screenfull';
 
 export default {
   name: 'Viewer3DCtrlFullscreen',
+
   components: {
     IconWrap,
     IconFullscreen

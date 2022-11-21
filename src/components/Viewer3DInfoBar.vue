@@ -1,20 +1,52 @@
-<template functional>
+<template>
   <div
     class="controlPanel controlPanel__infos"
-    :class="{ 'controlPanel__infos--bg': props.mouseOnView }"
+    :class="{ 'controlPanel__infos--bg': mouseOnView }"
   >
     <div class="cesiumLogo">
       <slot />
     </div>
     <dl class="flex whitespace-pre">
-      <dt>{{ parent.$t('layout.navigation.altitude') }}: </dt>
-      <dd>{{ props.altitude }}m</dd>
+      <dt>{{ $t('layout.navigation.altitude') }}: </dt>
+      <dd>{{ altitude }}m</dd>
       |
-      <dt>{{ parent.$t('layout.navigation.coordinates') }}: </dt>
-      <dd>{{ props.latitude }}, {{ props.longitude }}</dd>
+      <dt>{{ $t('layout.navigation.coordinates') }}: </dt>
+      <dd>{{ latitude }}, {{ longitude }}</dd>
     </dl>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Viewer3DInfoBar',
+
+  props: {
+    mouseOnView: {
+      type: Boolean,
+      default: () => false
+    },
+
+    pose: {
+      type: Object,
+      default: () => {}
+    }
+  },
+
+  computed: {
+    latitude(){
+      return parseFloat((this.pose.latitude || 0).toFixed(4));
+    },
+
+    longitude(){
+      return parseFloat((this.pose.longitude || 0).toFixed(4));
+    },
+
+    altitude(){
+      return parseFloat((this.pose.altitude || 0).toFixed(4));
+    }
+  },
+};
+</script>
 
 <style lang="postcss">
 .controlPanel__infos{
@@ -29,10 +61,12 @@
     padding-bottom: .1rem !important;
   }
 }
+
 .controlPanel__infos--bg{
   @apply bg-black bg-opacity-20 pt-1;
   border-top-right-radius: 0.25rem;
 }
+
 .cesiumLogo{
   & .cesium-widget-credits{
     @apply relative flex text-xxs leading-none font-normal text-gray-100;
@@ -64,13 +98,15 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .controlPanel__infos{
     @apply flex-col w-full items-start;
   }
+
   .cesiumLogo{
     order:2;
   }
+
   .cesium-credit-logoContainer{
     @apply mb-1;
     display:inline-block !important;
@@ -82,5 +118,4 @@
 }
 
 /* purgecss end ignore */
-
 </style>

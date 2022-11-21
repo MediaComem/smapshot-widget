@@ -16,7 +16,7 @@
             :class="{ 'layerSwitcher3d__wrapPreview--current': layer.id === activeLayer.id }"
           >
             <img
-              :src="layer.iconUrl"
+              :data-src="layer.iconUrl"
               alt=""
             >
           </div>

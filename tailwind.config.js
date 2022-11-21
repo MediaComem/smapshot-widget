@@ -19,10 +19,10 @@ module.exports = {
   theme: {
     slider: {
       desktop: {
-        height: '185px' // Use px or change 'centerMap' function in layouts/Dashboard
+        height: '185px' // Use px or change 'centerMap' function in layouts/LayoutExplorer
       },
       mobile: {
-        height: '160px' // Use px or change 'centerMap' function in layouts/Dashboard
+        height: '160px' // Use px or change 'centerMap' function in layouts/LayoutExplorer
       }
     },
 
@@ -40,6 +40,7 @@ module.exports = {
       white: '#ffffff',
 
       gray: {
+        20: '#f5f5f5',
         50: '#F2F2F2', // Disabled state
         100: '#E2E2E2',
         150: '#B3B3B3',
@@ -368,6 +369,7 @@ module.exports = {
       '50': '0.5',
       '60': '0.6',
       '70': '0.7',
+      '75': '0.75',
       '80': '0.8',
       '90': '0.9',
       '95': '0.95',
@@ -441,5 +443,34 @@ module.exports = {
       '50': '50'
     }
   },
-  variants: {}
+  variants: {},
+  plugins: [
+    require('tailwind-css-variables')(
+      {
+        screens: false,
+        fontFamily: false,
+        fontSize: false,
+        fontWeight: false,
+        lineHeight: false,
+        letterSpacing: false,
+        backgroundSize: false,
+        borderWidth: false,
+        borderRadius: false,
+        width: false,
+        height: false,
+        minWidth: false,
+        minHeight: false,
+        maxWidth: false,
+        maxHeight: false,
+        padding: false,
+        margin: false,
+        boxShadow: false,
+        zIndex: false,
+        opacity: false
+      },
+      {
+        // options
+      }
+    )
+  ]
 };

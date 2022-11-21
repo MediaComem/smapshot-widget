@@ -1,7 +1,7 @@
 import {
   GeographicTilingScheme,
   Rectangle
-} from 'cesium/Cesium';
+} from 'cesium';
 
 const countryCode = 'CH';
 
