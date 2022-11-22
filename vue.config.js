@@ -3,12 +3,15 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const PUBLIC_PATH = process.env.VUE_APP_PUBLIC_PATH || '/';
+
 function decodeParseProxyURL(url) {
   const proxyURL = decodeURIComponent(url.replace(/^\/proxy\/(.+)$/, '$1'));
   return new URL(proxyURL);
 }
 
 module.exports = {
+  publicPath: PUBLIC_PATH,
   pluginOptions: {
     i18n: {
       enableInSFC: false
