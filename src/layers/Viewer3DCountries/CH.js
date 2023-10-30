@@ -143,7 +143,7 @@ const terrainLayers = [
   {
     name: 'swissalti3d',
     terrainProvider: {
-      url: '//3d.geo.admin.ch/1.0.0/ch.swisstopo.terrain.3d/default/20180601/4326/',
+      url: 'https://download.swissgeol.ch/cli_terrain/ch-2m/',
       availableLevels: [8, 9, 10, 12, 14, 16, 17],
       rectangle: Rectangle.fromDegrees(5.013926957923385, 45.35600133779394, 11.477436312994008, 48.27502358353741)
     }
