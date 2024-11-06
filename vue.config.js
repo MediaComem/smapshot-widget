@@ -90,7 +90,7 @@ module.exports = {
         ] }),
       new webpack.DefinePlugin({
         // Define relative base path in cesium for loading assets
-        CESIUM_BASE_URL: JSON.stringify('/embed')
+        CESIUM_BASE_URL: JSON.stringify('/embed/')
       })
     ]
   },
