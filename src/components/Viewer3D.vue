@@ -232,7 +232,7 @@ export default {
 
 <style lang="postcss">
 #cesiumContainer {
-  @apply relative h-full w-full;
+  @apply relative h-full w-full overflow-hidden;
 }
 
 .slider--open #cesiumContainer {
