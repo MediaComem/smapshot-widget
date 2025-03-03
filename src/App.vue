@@ -76,7 +76,7 @@ export default {
       const location = window.location.pathname;
       const pathArray = location.split('/');
       const owner_id_slug = pathArray[3];
-      const original_id = pathArray[5];
+      const original_id = decodeURIComponent(pathArray[5]);
 
       return {
         owner_id_slug,
