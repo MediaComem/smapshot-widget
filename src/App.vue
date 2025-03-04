@@ -85,7 +85,7 @@ export default {
     },
 
     getImage({ owner_id_slug, original_id }) {
-      fetch(`${process.env.VUE_APP_SMAPSHOT_API_URL}/owners/${owner_id_slug}/original_images/${original_id}/attributes`)
+      fetch(`${process.env.VUE_APP_SMAPSHOT_API_URL}/owners/${owner_id_slug}/original_images/${encodeURIComponent(original_id)}/attributes`)
         .then(response => response.json())
         .then(data => {
           const { pose, poses, ...otherAttributes } = data;
