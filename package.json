@@ -13,6 +13,7 @@
     "cesium": "^1.84.0",
     "focus-visible": "^5.2.0",
     "intersection-observer": "^0.12.0",
+    "regenerator-runtime": "^0.14.1",
     "screenfull": "^5.1.0",
     "v-tooltip": "^2.1.2",
     "v-tostini": "^1.4.0",
@@ -72,6 +73,6 @@
     "not ie <= 11"
   ],
   "engines": {
-    "node": ">=14.0.0 <17.0.0"
+    "node": ">=14.0.0 <27.0.0"
   }
 }
