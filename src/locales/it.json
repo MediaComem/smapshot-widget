@@ -62,9 +62,6 @@
         "maptiler": {
           "satellite": "Maptiler Satellite"
         },
-        "bing": {
-          "aerial": "Bing aerial"
-        },
         "country": "paese | paesi"
       }
     },

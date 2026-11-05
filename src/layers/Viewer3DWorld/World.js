@@ -13,17 +13,6 @@ const imageryLayers = [
       maximumLevel: 20
     }
   },
-  {
-    id: 'bing.aerial',
-    iconUrl: require('@/assets/images/mapProviders/bing_aerial.jpg'),
-    associatedTerrain: 'maptiler.terrain',
-    imageryProvider: {
-      cesiumType: 'BingMapsImageryProvider',
-      url: 'https://dev.virtualearth.net',
-      key: process.env.VUE_APP_BING_MAP_TOKEN,
-      mapStyle: BingMapsStyle.AERIAL
-    }
-  }
 ];
 
 const overlayLayers = [];
