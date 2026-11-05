@@ -45,6 +45,12 @@ module.exports = {
       unknownContextRegExp: /\/cesium\/cesium\/Source\/Core\/buildModuleUrl\.js/,
       rules: [
         {
+          // Keep cesium widgets css: not listed in cesium's package.json sideEffects, so webpack drops it
+          test: /\.css$/,
+          include: path.resolve(__dirname, 'node_modules/cesium/Build'),
+          sideEffects: true
+        },
+        {
           test: /\.(png|gif|jpg|jpeg|svg|xml|json|czml|glb)$/,
           include: path.resolve(__dirname, 'node_modules/cesium/Source'),
           use: ['url-loader']
