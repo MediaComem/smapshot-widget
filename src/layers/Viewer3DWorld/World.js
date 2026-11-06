@@ -1,5 +1,3 @@
-import { BingMapsStyle } from 'cesium';
-
 const imageryLayers = [
   {
     id: 'maptiler.satellite',
