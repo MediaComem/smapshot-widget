@@ -72,7 +72,6 @@
 
 <script>
 import {
-  BingMapsImageryProvider,
   Cesium3DTileset,
   CesiumTerrainProvider,
   PrimitiveCollection,
@@ -248,9 +247,6 @@ export default {
         switch (cesiumType) {
             case 'WebMapServiceImageryProvider':
               imageryConstruct = new WebMapServiceImageryProvider(imageryProvider);
-              break;
-            case 'BingMapsImageryProvider':
-              imageryConstruct = new BingMapsImageryProvider(imageryProvider);
               break;
             default: //default with the most common constructor
               imageryConstruct = new UrlTemplateImageryProvider(imageryProvider);

@@ -80,7 +80,6 @@ Variable                                | Default value                         
 `VUE_APP_MAPTILER_CUSTOM_TOKEN`         |                                                                       | The access token used to access MapTiler custom tiles and geocoding services.
 `VUE_APP_MAPTILER_SATELLITE_TOKEN`      |                                                                       | The access token used to access MapTiler satellite tiles.
 `VUE_APP_MAPTILER_TERRAIN_TOKEN`        |                                                                       | The access token used to access MapTiler terrain tiles.
-`VUE_APP_BING_MAP_TOKEN`                |                                                                       | The access token used to access Bing Map tiles.
 `VUE_APP_VORARLBERG_TERRAIN_URL`        | `https://smapterrain.heig-vd.ch/tilesets/Austria-terrain-tiles-4326`  | The URL to access Terrain tilesets for Austria Vorarlberg.
 `VUE_APP_IMAGINERIO_PREFIX_TERRAIN_URL` | `https://smapterrain.heig-vd.ch/brazil/tilesets/`                     | The URL prefix to access Terrain tilesets for Brazil ImagineRio.
 
