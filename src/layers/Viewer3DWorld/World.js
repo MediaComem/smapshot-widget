@@ -12,7 +12,7 @@ const imageryLayers = [
       tileHeight: 128,
       maximumLevel: 20
     }
-  },
+  }
 ];
 
 const overlayLayers = [];
