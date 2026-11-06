@@ -9,6 +9,7 @@
         :key="layer.id"
       >
         <button
+          v-lazy-container="{ selector: 'img' }"
           @click="$emit('switch-base-layer', sendImageryAndTerrain(layer, worldWithLayers.terrainLayers))"
         >
           <div
